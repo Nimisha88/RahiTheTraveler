@@ -1,0 +1,25 @@
+/* Color Palette */
+/* #28DF99, #99F3BD, #D2F6C5, #F6F7D4, #ADE498
+#FFA45B, #FFDA77, #FBF6F0, #AEE6E6, #9ded9d */
+// Unused Fonts - Averia Sans Libre, Sacramento
+
+$primary-color: #fbf6f0;
+$secondary-color: #ffa45b;
+$tertiary-color: #ffda77;
+$quaternary-color: #aee6e6;
+$accent-color: #9ded9d;
+$primary-font: 'Montserrat', sans-serif;
+$headline-font: 'Expletus Sans', sans-serif;
+
+
+body {
+  font-family: $headline-font;
+  background-color: #FBF6F0;
+  color: #FFA45B;
+  text-align: center;
+  /* border: 1px solid white; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $headline-font;
+}
