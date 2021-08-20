@@ -1,0 +1,16 @@
+/* Color Palette */
+/* #28DF99, #99F3BD, #D2F6C5, #F6F7D4, #ADE498
+#FFA45B, #FFDA77, #FBF6F0, #AEE6E6, #9ded9d */
+body {
+  font-family: "Expletus Sans", sans-serif;
+  background-color: #FBF6F0;
+  color: #FFA45B;
+  text-align: center;
+  /* border: 1px solid white; */
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Expletus Sans", sans-serif;
+}
+
+/*# sourceMappingURL=style.css.map */

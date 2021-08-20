@@ -1,5 +1,5 @@
 // ----------------------------------------------------------------------------
-// Objects for User Input, Search Results and Storing Data
+// Client Side Data Objects
 // ----------------------------------------------------------------------------
 // UserEntry(destination, startDate) - User Input
 // ObjName.prototype.varName =  or ObjName.prototype.fnName = function() {}
