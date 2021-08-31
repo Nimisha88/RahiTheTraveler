@@ -4,8 +4,7 @@
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-import { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics } from './server-objects.js';
-import { createRequire } from "module"; // To make require work with import
+const { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics } = require('./server-objects.js');
 
 
 // ----------------------------------------------------------------------------
@@ -13,8 +12,6 @@ import { createRequire } from "module"; // To make require work with import
 // Load Environment Variables and Dependencies
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
-
-const require = createRequire(import.meta.url); // To make require work with import
 
 require('dotenv').config(); // Load Environment Variables
 const express = require('express'); // Include Express
@@ -53,7 +50,7 @@ function configureApp() {
   app.use(cors());
 
   // Initialize the Application Project folder
-  app.use(express.static('../client'));
+  app.use(express.static('dist'));
 }
 
 const server = app.listen(port, () => {
@@ -89,18 +86,20 @@ async function lookupDestination(place, maxResults=1) {
 
 }
 
-async function lookupWeather(lat, lng, days='7') {
+async function lookupWeather(lat, lng, days='7', units='I') {
 
   console.log(WeatherbitAPI.baseURL+WeatherbitAPI.forecastEP+
                                WeatherbitAPI.latitue+lat+also+
                                WeatherbitAPI.longitude+lng+also+
                                WeatherbitAPI.forcastDays+days+also+
+                               WeatherbitAPI.tempUnits+units+also+
                                WeatherbitAPI.apiKey+apiKeyWeatherbit);
 
   const response = await fetch(WeatherbitAPI.baseURL+WeatherbitAPI.forecastEP+
                                WeatherbitAPI.latitue+lat+also+
                                WeatherbitAPI.longitude+lng+also+
                                WeatherbitAPI.forcastDays+days+also+
+                               WeatherbitAPI.tempUnits+units+also+
                                WeatherbitAPI.apiKey+apiKeyWeatherbit);
 
   try {
@@ -190,6 +189,8 @@ async function processPostRequest() {
 lastUserEntryLookup = {
   "destination": "Mumbai",
   "startDate": "2021-08-25",
+  "flights": [],
+  "packingList": [],
   "geoname": {
     "status": 200,
     "type": "geoname",

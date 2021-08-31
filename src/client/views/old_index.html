@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rahi - The Traveler</title>
+
+    <!-- Add Icon -->
+    <link class="app-icon" rel="icon" href="../assets/rahi-icon.png">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f9ed1b6ec7.js" crossorigin="anonymous"></script>
+
+    <!-- Add Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Averia+Sans+Libre&family=Sacramento&family=Montserrat&family=Expletus+Sans&display=swap" rel="stylesheet">
+
+    <!-- Add StyleSheet -->
+    <!-- <link rel="stylesheet" href="./styles/style.css"> -->
+
+  </head>
+  <body>
+    <header id="header">
+      <div class="header-container">
+        <img src="" id="header-backdrop" alt="Header Backdrop">
+        <div class="nav-container">
+          <img src="" id="app-logo" alt="App Logo">
+          <div class="do-nothing"></div>
+          <div class="nav-menu">
+            <ul class="nav-menu-ul">
+              <li class="nav-menu-li"><a href="#">About Us</a></li>
+              <li class="nav-menu-li"><a href="#">Saved Trips</a></li>
+              <li class="nav-menu-li selected"><a href="#">Home</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="hero-container">
+          <!-- <img src="" id="app-hero" alt="App Hero"> -->
+          <div class="hero">
+            <div class="get-started">
+              <div class="get-started-text">
+                <p>Are you traveling to ...</p>
+                <h1>Explore <i class="fas fa-circle dot-circle"></i> Wander <i class="fas fa-circle dot-circle"></i> Tour</h1>
+                <p>Why not make it stress-free!<br />Come, organize your travel with us today.</p>
+              </div>
+              <input type="button" id="get-started-btn" value="Get Started">
+            </div>
+            <div class="cta-container">
+              <h1>New Trip?</h1>
+              <div class="new-search-cta">
+                <div class="search-where-to">
+                  <label for="where-to"><i class="fas fa-map-marker-alt"></i></label>
+                  <input type="text" id="where-to" placeholder="Where to?" autocomplete="off" required>
+                </div>
+                <div class="search-start-date">
+                  <label for="trip-start-date"><i class="far fa-calendar-alt"></i></label>
+                  <input type="date" id="trip-start-date" placeholder="When?" autocomplete="off" required>
+                </div>
+                <div class="trip-search-btn">
+                  <label for="search-btn"><i class="fas fa-search"></i></label>
+                  <input type="button" id="search-btn">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="search-result">
+      <div class="result-container">
+
+      </div>
+    </section>
+
+    <section id="place-card">
+      <div class="card-container">
+
+      </div>
+    </section>
+
+    <footer id="footer">
+      <div class="copyright footer">
+        <h4>© 2021 Rahi, The Traveler. All rights reserved.</h4>
+      </div>
+    </footer>
+    <!-- Add Script -->
+    <!-- <script type="module" src="./js/app.js" type="text/javascript" charset="utf-8"></script> -->
+  </body>
+</html>

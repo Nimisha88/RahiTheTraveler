@@ -2,19 +2,27 @@
   "name": "rahithetraveller",
   "version": "1.0.0",
   "description": "A travel application that uses multiple types of data, from different APIs (data sources) such as weather, location co-ordinates, destination images etc",
-  "main": "web.config.js",
-  "type": "module",
+  "main": "index.js",
   "scripts": {
     "test": "jest",
-    "dev": "webpack --mode development",
+    "server": "node src/server/server.js",
+    "dev": "webpack server --mode development",
     "prod": "webpack --mode production"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
+    ]
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Nimisha88/RahiTheTraveler.git"
   },
   "keywords": [],
-  "author": "",
+  "author": "Nimisha Viraj",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/Nimisha88/RahiTheTraveler/issues"
@@ -22,14 +30,26 @@
   "homepage": "https://github.com/Nimisha88/RahiTheTraveler#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
     "cors": "^2.8.5",
+    "css-loader": "^6.2.0",
     "dotenv": "^10.0.0",
     "express": "^4.17.1",
+    "html-webpack-plugin": "^5.3.2",
     "node-fetch": "^2.6.1",
+    "sass-loader": "^12.1.0",
     "webpack": "^5.50.0",
     "webpack-cli": "^4.7.2"
   },
   "devDependencies": {
-    "jest": "^27.0.6"
+    "@babel/core": "^7.15.0",
+    "@babel/plugin-transform-modules-commonjs": "^7.15.0",
+    "@babel/plugin-transform-runtime": "^7.15.0",
+    "@babel/preset-env": "^7.15.0",
+    "babel-jest": "^27.0.6",
+    "babel-loader": "^8.2.2",
+    "jest": "^27.0.6",
+    "style-loader": "^3.2.1",
+    "webpack-dev-server": "^4.0.0"
   }
 }

@@ -10,4 +10,19 @@ function UserEntry(destination, startDate) {
   this.startDate = startDate;
 }
 
-export { UserEntry }
+function FlightTicket(fromPlace, fromDate, fromTime, toPlace, toDate, toTime) {
+  this.fromPlace = fromPlace;
+  this.fromDate = fromDate;
+  this.fromTime = fromTime;
+  this.toPlace = toPlace;
+  this.toDate = toDate;
+  this.toTime = toTime;
+}
+
+function PackingItem(id, name, isPacked=false) {
+  this.id = id;
+  this.name = name;
+  this.isPacked = isPacked;
+}
+
+export { UserEntry, FlightTicket, PackingItem }

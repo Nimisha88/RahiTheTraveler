@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Rahi - The Traveler</title>
+    <!-- Add Icon -->
+    <link class="app-icon" rel="icon" href="../assets/app-icon.png">
+
+    <!-- Font Awesome -->
+    <script src="https://kit.fontawesome.com/f9ed1b6ec7.js" crossorigin="anonymous"></script>
+
+    <!-- Add Fonts -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif&family=Averia+Sans+Libre&family=Sacramento&family=Montserrat&family=Expletus+Sans&display=swap" rel="stylesheet">
+
+    <!-- Add StyleSheet -->
+    <!-- <link rel="stylesheet" href="../styles/appStyle.css"> -->
+  </head>
+  <body>
+    <div class="webpage">
+      <img class="img-backdrop" src="" alt="Backdrop Image">
+      <header id="navigation" class="navigation">
+        <div class="nav-logo">
+          <img src="" id="app-logo" alt="App Logo">
+        </div>
+        <div class="nav-filler"></div>
+        <div class="nav-links">
+          <ul>
+            <li class="nav-link"><a href="#">About Us</a></li>
+            <li class="nav-link"><a href="#">Trips</a></li>
+            <li class="nav-link selected"><a href="#">Home</a></li>
+          </ul>
+        </div>
+      </header>
+      <section id="hero" class="hero">
+        <img class="hero-img" src="" alt="Hero Image">
+        <div class="get-started">
+          <div class="get-started-text">
+            <p>What do you like to do on your trips?</p>
+            <h1>Explore <i class="fas fa-circle dot-circle"></i> Wander <i class="fas fa-circle dot-circle"></i> Tour</h1>
+            <p>Why not make it stress-free!<br />Come, organize your travel with us today.</p>
+          </div>
+          <div class="get-started-cta">
+            <input type="button" id="get-started-btn" value="Get Started">
+          </div>
+        </div>
+        <div class="new-trip hide-element">
+          <div class="new-trip-text">
+            <p>Where are you headed to next?</p>
+          </div>
+          <div class="new-trip-cta">
+            <div class="cta-element destination">
+              <label for="where-to"><i class="fas fa-map-marker-alt"></i></label>
+              <input type="text" id="where-to" placeholder="Where to?" autocomplete="off" required>
+            </div>
+            <div class="cta-element start-date">
+              <label for="trip-start-date"><i class="far fa-calendar-alt"></i></label>
+              <input type="date" id="trip-start-date" placeholder="When?" autocomplete="off" required>
+            </div>
+            <div class="cta-element search">
+              <label for="search-btn"><i class="fas fa-search"></i></label>
+              <input type="button" id="search-btn">
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <section id="modal" class="modal hide-element">
+      <div class="close-modal"><i class="fas fa-times"></i></div>
+      <div class="modal-container">
+        <div class="modal-img">
+          <img id="loc-img" class="loc-img" src="" alt="Location Image">
+          <div class="loc-data">
+            <h1 id="loc-name">Mumbai, India</h1>
+            <h3 id="local-datetime">Thurs, Aug 26th, 2021</h3>
+          </div>
+          <div class="save-trip-cta">
+            <input type="button" id="save-trip-btn" value="Save Trip">
+          </div>
+        </div>
+        <div class="modal-data">
+          <div class="modal-items col">
+            <div class="modal-item weather"></div><!-- Weather-->
+            <!-- Packing Start -->
+            <div class="modal-item packing">
+              <i class="fas fa-briefcase fa-3x packing-icon"></i>
+              <div class="no-packing-data">
+                <h1>Packing List</h1>
+                <h4 class="text-alt">Want to add an item?</h4>
+              </div>
+              <div class="with-packing-data packing-list hide-element"></div>
+              <div class="packing-cta">
+                <div id="add-packing-item" class="add-item">
+                  <i class="fas fa-plus-circle add-icon"></i>
+                </div>
+                <div id="new-packing-item" class="hide-element">
+                  <input type="text" name="item-name" placeholder="Item name ..." autocomplete="off">
+                  <i class="fas fa-chevron-circle-right"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Packing End -->
+          </div>
+          <div class="modal-items alt-col">
+            <!-- Flights Start -->
+            <div class="modal-item flights">
+              <p><i class="fas fa-plane fa-3x flight-icon"></i></p>
+              <div class="no-flight-data">
+                <h1>Flight Tickets</h1>
+                <h4 class="text-alt">Want to add one?</h4>
+              </div>
+              <div class="new-flight-ticket-cta hide-element">
+                <div class="from-place">
+                  <input type="text" id="from-place" name="from-place" placeholder="From?" autocomplete="off">
+                </div>
+                <div class="from-date">
+                  <label for="from-date" class="text-alt">Fly On? </label>
+                  <input type="date" id="from-date" name="from-date">
+                </div>
+                <div class="from-time">
+                  <label for="from-time" class="text-alt">Fly At? </label>
+                  <input type="time" id="from-time" name="from-time">
+                </div>
+                <div class="to-place">
+                  <input type="text" id="to-place" name="to-place" placeholder="To?" autocomplete="off">
+                </div>
+                <div class="to-date">
+                  <label for="to-date" class="text-alt">Land On? </label>
+                  <input type="date" id="to-date" name="to-date">
+                </div>
+                <div class="to-time">
+                  <label for="to-time" class="text-alt">Land At? </label>
+                  <input type="time" id="to-time" name="to-time">
+                </div>
+              </div>
+              <div class="with-flight-data tickets hide-element"></div>
+              <div class="flight-cta">
+                <div id="add-flight-ticket" class="add-item">
+                  <i class="fas fa-plus-circle"></i>
+                </div>
+                <div id="new-flight-ticket" class="add-item hide-element">
+                  <i class="fas fa-chevron-circle-right"></i>
+                </div>
+              </div>
+            </div>
+            <!-- Flights End -->
+            <div class="modal-item">
+              <div class="add-item"><i class="fas fa-plus-circle"></i></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="saved-trips" class="saved-trips hide-element">
+      <img id="saved-trip-backdrop" class="img-backdrop saved-trip-backdrop" src="" alt="Backdrop Image">
+    </section>
+    <footer id="footer">
+      <div class="copyright footer">
+        <h4>© 2021 Rahi, The Traveler. All rights reserved.</h4>
+      </div>
+    </footer>
+    <!-- Add Script -->
+    <!-- <script type="module" src="./js/app.js" type="text/javascript" charset="utf-8"></script> -->
+  </body>
+</html>

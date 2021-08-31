@@ -11,3 +11,16 @@ export function toTwoDigit(val) {
     return val;
   }
 }
+
+export function destructElementChildren(element) {
+  while(element.firstChild) {
+    element.removeChild(element.lastChild);
+  }
+}
+
+export function reloadPage() {
+  let locHref = location.href;
+  location.href += '#top';
+  window.location.reload();
+  location.href = locHref;
+}

@@ -81,18 +81,17 @@ function Weather(apiDataObj) {
   this.state = apiDataObj.state_code;
   this.data = [];
 }
-// Supporting Data Object for Weather Forecast
+// Supporting Data Object for Weather Forecast excluded: ${apiDataObj.wind_dir}°
 function DayWiseWeatherData(apiDataObj) {
   this.date = apiDataObj.valid_date;
   this.weather = apiDataObj.weather;
   this.maxTemp = apiDataObj.max_temp;
   this.minTemp = apiDataObj.min_temp;
-  this.feelsLikeMaxTemp = apiDataObj.app_min_temp;
-  this.feelsLikeMinTemp = apiDataObj.app_max_temp;
+  this.feelsLikeTemp = apiDataObj.app_max_temp;
+  this.humidity = Math.round(apiDataObj.rh);
+  this.wind = `${apiDataObj.wind_spd} ${apiDataObj.wind_cdir}`;
   this.sunrise = apiDataObj.sunrise_ts;
   this.sunset = apiDataObj.sunset_ts;
-  this.moonrise = apiDataObj.moonrise_ts;
-  this.moonset = apiDataObj.moonset_ts;
 }
 
 // Data Obj to store app spec PixabayAPI Data
@@ -112,6 +111,8 @@ function DestinationGraphics(apiDataObj) {
 function UserEntry(apiDataObj) {
   this.destination = apiDataObj.destination;
   this.startDate = apiDataObj.startDate;
+  this.flights = [];
+  this.packingList = [];
 }
 
-export { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics }
+module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics }
