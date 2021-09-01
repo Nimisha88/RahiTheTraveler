@@ -4,7 +4,7 @@
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-const { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics } = require('./server-objects.js');
+const { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics } = require('./server-objects.js');
 
 
 // ----------------------------------------------------------------------------
@@ -135,6 +135,21 @@ async function lookupCityImage(place, category='travel', type='photo') {
   }
 }
 
+async function lookupCountryInfo(countryCode) {
+
+  console.log(RestCountriesAPI.baseURL+RestCountriesAPIcountryCodeEP+countryCode);
+
+  const response = await fetch(RestCountriesAPI.baseURL+RestCountriesAPIcountryCodeEP+countryCode);
+
+  try {
+    const json = await response.json();
+    return json;
+  }
+  catch(error) {
+    console.log('******************** Rest Countries Fetch Error ******************** \n', error);
+  }
+}
+
 async function processPostRequest() {
   let apiResult, imgResult;
   let isPicFound = false;
@@ -178,6 +193,9 @@ async function processPostRequest() {
     lastUserEntryLookup.graphic = new DestinationGraphics(imgResult);
   }
 
+  // Call to Rest Rest Countries
+  apiResult = await lookupCountryInfo(lastUserEntryLookup.geoname.countryCode);
+  lastUserEntryLookup.countryinfo = new CountryInfo(apiResult);
 }
 
 // -----------------------------------------------------------------------------
@@ -219,12 +237,11 @@ lastUserEntryLookup = {
       },
       "maxTemp": 29.3,
       "minTemp": 24.2,
-      "feelsLikeMaxTemp": 25,
-      "feelsLikeMinTemp": 32.1,
+      "feelsLikeTemp": 32,
       "sunrise": 1629420655,
       "sunset": 1629466518,
-      "moonrise": 1629458117,
-      "moonset": 1629415555
+      "humidity": 20,
+      "wind" : "156 NE",
     }, {
       "date": "2021-08-21",
       "weather": {
@@ -234,12 +251,11 @@ lastUserEntryLookup = {
       },
       "maxTemp": 25.1,
       "minTemp": 24,
-      "feelsLikeMaxTemp": 25,
-      "feelsLikeMinTemp": 25.8,
+      "feelsLikeTemp": 26,
       "sunrise": 1629507071,
       "sunset": 1629552873,
-      "moonrise": 1629547919,
-      "moonset": 1629505663
+      "humidity": 20,
+      "wind" : "156 NE"
     }, {
       "date": "2021-08-22",
       "weather": {
@@ -249,12 +265,11 @@ lastUserEntryLookup = {
       },
       "maxTemp": 28.6,
       "minTemp": 24.2,
-      "feelsLikeMaxTemp": 25.1,
-      "feelsLikeMinTemp": 30.9,
+      "feelsLikeTemp": 31,
       "sunrise": 1629593487,
       "sunset": 1629639226,
-      "moonrise": 1629637367,
-      "moonset": 1629592063
+      "humidity": 20,
+      "wind" : "156 NE"
     }]
   },
   "graphic": {
@@ -267,6 +282,25 @@ lastUserEntryLookup = {
     "largeImageURL": "https://pixabay.com/get/g9fb5dfc8d2de4d75832a7f941e09b0f34f5b93756ce3b1eeb2bec2680544a5f48f386b7defae624f3492953d2fdc6988da1d0e8c52a09848318b4ace1b9009d6_1280.jpg",
     "pixabayUserID": 1409366,
     "pixabayUser": "Walkerssk"
+  },
+  "countryinfo": {
+    "status": 200,
+    "type": "country-info",
+    "name": "India",
+    "capital": "New Delhi",
+    "nativeName": "भारत",
+    "currency": {
+      "code": "INR",
+      "name": "Indian rupee",
+      "symbol": "₹"
+    },
+    "firstLang": {
+      "iso639_1": "hi",
+      "iso639_2": "hin",
+      "name": "Hindi",
+      "nativeName": "हिन्दी"
+    },
+    "flag": "https://restcountries.eu/data/ind.svg"
   }
 }
 

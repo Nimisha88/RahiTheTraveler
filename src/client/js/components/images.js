@@ -12,7 +12,8 @@ const appLogoEle = document.getElementById('app-logo');
 const backdropImgEle = document.querySelector('.img-backdrop');
 const heroImgEle = document.querySelector('.hero-img');
 const locationImgEle = document.getElementById('loc-img');
-const savedTripBackdropEle = document.getElementById('saved-trip-backdrop')
+const savedTripBackdropEle = document.getElementById('saved-trip-backdrop');
+const savedTripBookmarkEle = document.getElementById('bm-image');
 
 const loadNavStaticAssets = () => {
   appIconEle.href = appIcon;
@@ -30,6 +31,7 @@ const loadModalFallbackAsset = () => {
 
 const loadSavedTripStaticAsset = () => {
   savedTripBackdropEle.src = savedTripBackdrop;
+  savedTripBookmarkEle.src = locFallbackImg;
 }
 
 
