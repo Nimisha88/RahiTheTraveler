@@ -6,11 +6,12 @@
 
 import '../styles/style.scss';
 import * as HelperFns from './components/helper-fns.js';
-import { UserEntry, FlightTicket, PackingItem } from './components/objects.js';
 import { postAsync, getAsync } from './components/apis.js';
 import createWeatherDisplay from './components/weather.js';
-import createFlightTicketDisplay from './components/flight-ticket.js';
 import createPackingItemDisplay from './components/packing-item.js';
+import createFlightTicketDisplay from './components/flight-ticket.js';
+import createCountryInfoDisplay from './components/country-info.js';
+import { GetStartedView, SearchView, TripView, UserEntry, FlightTicket, PackingItem } from './components/objects.js';
 import { loadNavStaticAssets, loadSearchStaticAssets, loadModalFallbackAsset, loadSavedTripStaticAsset } from './components/images.js';
 
 
@@ -21,43 +22,52 @@ import { loadNavStaticAssets, loadSearchStaticAssets, loadModalFallbackAsset, lo
 // -----------------------------------------------------------------------------
 
 // Get Started
-const getStartedContainerEle = document.querySelector('.get-started');
-const getStartedBtnEle = document.getElementById('get-started-btn');
+// const getStartedContainerEle = document.querySelector('.get-started');
+// const getStartedBtnEle = document.getElementById('get-started-btn');
+
+
+
+// console.log(JSON.stringify(GetStartedView));
 
 // Search CTA
-const searchCTAContainerEle = document.querySelector('.new-trip');
-const whereTo = document.getElementById('where-to');
-const tripStartDate = document.getElementById('trip-start-date');
-const searchCTABtn = document.getElementById('search-btn');
+// const searchCTAContainerEle = document.querySelector('.new-trip');
+// const whereTo = document.getElementById('where-to');
+// const tripStartDate = document.getElementById('trip-start-date');
+// const searchCTABtn = document.getElementById('search-btn');
+
+
 
 // Trip Modal
-const locationImgEle = document.getElementById('loc-img');
+// const locationImgEle = document.getElementById('loc-img');
 // Trip Modal - Close Button
-const closeModalBtn = document.querySelector('.close-modal');
-const modalEle = document.getElementById('modal');
+// const closeModalBtn = document.querySelector('.close-modal');
+// const modalEle = document.getElementById('modal');
 // Trip Modal - Weather
-const weatherData = document.querySelector('.weather');
+// const weatherData = document.querySelector('.weather');
+
 // Trip Modal - Flight Tickets
-const noFlightDataDisplay = document.querySelector('.no-flight-data');
-const newFlightTicketCTA = document.querySelector('.new-flight-ticket-cta');
-const withFlightDataDisplay = document.querySelector('.with-flight-data');
-const addFlightTicketBtn = document.getElementById('add-flight-ticket');
-const newFlightTicketBtn = document.getElementById('new-flight-ticket');
-const fromPlace = document.getElementById('from-place');
-const fromDate = document.getElementById('from-date');
-const fromTime = document.getElementById('from-time');
-const toPlace = document.getElementById('to-place');
-const toDate = document.getElementById('to-date');
-const toTime = document.getElementById('to-time');
+// const noFlightDataDisplay = document.querySelector('.no-flight-data');
+// const newFlightTicketCTA = document.querySelector('.new-flight-ticket-cta');
+// const withFlightDataDisplay = document.querySelector('.with-flight-data');
+// const addFlightTicketBtn = document.getElementById('add-flight-ticket');
+// const newFlightTicketBtn = document.getElementById('new-flight-ticket');
+// const fromPlace = document.getElementById('from-place');
+// const fromDate = document.getElementById('from-date');
+// const fromTime = document.getElementById('from-time');
+// const toPlace = document.getElementById('to-place');
+// const toDate = document.getElementById('to-date');
+// const toTime = document.getElementById('to-time');
 // Trip Modal - Packing Items
-const noPackingDataEle = document.querySelector('.no-packing-data');
-const packingListEle = document.querySelector('.packing-list');
-const addPackingItemEle = document.getElementById('add-packing-item');
-const addNewPackingItemEle = document.getElementById('new-packing-item');
-const addNewPackingItemNameEle = addNewPackingItemEle.getElementsByTagName('input')[0];
-const addNewPackingItemBtn = addNewPackingItemEle.getElementsByTagName('i')[0];
+// const noPackingDataEle = document.querySelector('.no-packing-data');
+// const packingListEle = document.querySelector('.packing-list');
+// const addPackingItemEle = document.getElementById('add-packing-item');
+// const addNewPackingItemEle = document.getElementById('new-packing-item');
+// const addNewPackingItemNameEle = addNewPackingItemEle.getElementsByTagName('input')[0];
+// const addNewPackingItemBtn = addNewPackingItemEle.getElementsByTagName('i')[0];
 // Trip Modal - Save Trip
-const saveTripBtn = document.getElementById('save-trip-btn');
+// const saveTripBtn = document.getElementById('save-trip-btn');
+
+
 
 // Generic
 const todaysDate = new Date();
@@ -149,6 +159,25 @@ let searchResult = {
     "largeImageURL": "https://pixabay.com/get/g9fb5dfc8d2de4d75832a7f941e09b0f34f5b93756ce3b1eeb2bec2680544a5f48f386b7defae624f3492953d2fdc6988da1d0e8c52a09848318b4ace1b9009d6_1280.jpg",
     "pixabayUserID": 1409366,
     "pixabayUser": "Walkerssk"
+  },
+  "countryinfo": {
+    "status": 200,
+    "type": "country-info",
+    "name": "India",
+    "capital": "New Delhi",
+    "nativeName": "भारत",
+    "currency": {
+      "code": "INR",
+      "name": "Indian rupee",
+      "symbol": "₹"
+    },
+    "firstLang": {
+      "iso639_1": "hi",
+      "iso639_2": "hin",
+      "name": "Hindi",
+      "nativeName": "हिन्दी"
+    },
+    "flag": "https://restcountries.eu/data/ind.svg"
   }
 };
 
@@ -162,25 +191,26 @@ let searchResult = {
 // -----------------------------------------------------------------------------
 
 function displayModal(trip) {
-  modalEle.classList.remove('hide-element');
+  TripView.viewContainer.classList.remove('hide-element');
 
   // try {
-  //   locationImgEle.src = trip.graphic.webformatURL;
+  //   TripView.location.image.src = trip.graphic.webformatURL;
   // }
   // catch(error) {
   //   console.log('******************** Loction Image Failed, Fallback image loaded ******************** \n', error);
   //   loadModalFallbackAsset();
   // }
   loadModalFallbackAsset();
-  createWeatherDisplay(searchResult.weather.data[0], searchResult.weather.timezone);
+  TripView.weather.viewContainer.appendChild(createWeatherDisplay(searchResult.weather.data[0], searchResult.weather.timezone));
+  TripView.countryinfo.viewContainer.appendChild(createCountryInfoDisplay(searchResult.countryinfo));
 
   if(!trip.packingList) {
-    noPackingDataEle.classList.remove('hide-element');
-    packingListEle.classList.add('hide-element');
+    TripView.packing.noDataContainer.classList.remove('hide-element');
+    TripView.packing.withDataContainer.classList.add('hide-element');
   }
   else {
     for(let item of trip.packingList) {
-      packingListEle.appendChild(createPackingItemDisplay(item));
+      TripView.packing.withDataContainer.appendChild(createPackingItemDisplay(item));
       if(item.isPacked) {
         document.getElementById(item.id).click();
       }
@@ -188,18 +218,18 @@ function displayModal(trip) {
   }
 
   if(!trip.flights.length) {
-    noFlightDataDisplay.classList.remove('hide-element');
-    withFlightDataDisplay.classList.add('hide-element');
+    TripView.flight.noDataContainer.classList.remove('hide-element');
+    TripView.flight.withDataContainer.classList.add('hide-element');
   }
   else {
     for(let ticket of trip.flights) {
-      withFlightDataDisplay.appendChild(createFlightTicketDisplay(ticket));
+      TripView.flight.withDataContainer.appendChild(createFlightTicketDisplay(ticket));
     }
   }
 }
 
 async function processSearchRequest() {
-  let latestSearchEntry = new UserEntry(whereTo.value, tripStartDate.value);
+  let latestSearchEntry = new UserEntry(SearchView.whereTo.value, SearchView.startDate.value);
   console.log(JSON.stringify(latestSearchEntry));
 
   try {
@@ -217,20 +247,20 @@ async function processSearchRequest() {
 function addSearchCTAEventListeners() {
 
   //Get Started
-  getStartedBtnEle.addEventListener('click', (event) => {
-    getStartedContainerEle.classList.add('hide-element');
-    searchCTAContainerEle.classList.remove('hide-element');
+  GetStartedView.ctaBtn.addEventListener('click', (event) => {
+    GetStartedView.viewContainer.classList.add('hide-element');
+    SearchView.viewContainer.classList.remove('hide-element');
   });
 
   // TripStartDate
-  tripStartDate.addEventListener('click', (event) => {
+  SearchView.startDate.addEventListener('click', (event) => {
     // Date input's min attrubute accepts value in syntax: 2021-08-14
-    tripStartDate.min = minDateInput;
-    console.log(`Date: ${tripStartDate.min}`);
+    SearchView.startDate.min = minDateInput;
+    console.log(`Date: ${SearchView.startDate.min}`);
   });
 
   // SearchCTABtn
-  searchCTABtn.addEventListener('click', (event) => {
+  SearchView.ctaBtn.addEventListener('click', (event) => {
     // TODO: Add ClientSide Validations
     // processSearchRequest();
     displayModal(searchResult);
@@ -238,42 +268,48 @@ function addSearchCTAEventListeners() {
   });
 
   // To close modal
-  closeModalBtn.addEventListener('click', (event) => {
-    HelperFns.destructElementChildren(weatherData);
-    HelperFns.destructElementChildren(withFlightDataDisplay);
-    HelperFns.destructElementChildren(packingListEle);
-    modalEle.classList.add('hide-element');
-    searchCTAContainerEle.classList.add('hide-element');
-    getStartedContainerEle.classList.remove('hide-element');
+  TripView.closeCTABtn.addEventListener('click', (event) => {
+    HelperFns.destructElementChildren(TripView.weather.viewContainer);
+    HelperFns.destructElementChildren(TripView.countryinfo.viewContainer);
+    HelperFns.destructElementChildren(TripView.flight.withDataContainer);
+    HelperFns.destructElementChildren(TripView.packing.withDataContainer);
+    TripView.viewContainer.classList.add('hide-element');
+    SearchView.viewContainer.classList.add('hide-element');
+    GetStartedView.viewContainer.classList.remove('hide-element');
     // HelperFns.reloadPage();
   });
 
   // Add Flight Details
-  addFlightTicketBtn.addEventListener('click', (event) => {
-    noFlightDataDisplay.classList.add('hide-element');
-    withFlightDataDisplay.classList.add('hide-element');
-    newFlightTicketCTA.classList.remove('hide-element');
+  TripView.flight.addCTABtn.addEventListener('click', (event) => {
+    TripView.flight.noDataContainer.classList.add('hide-element');
+    TripView.flight.withDataContainer.classList.add('hide-element');
+    TripView.flight.addCTAView.viewContainer.classList.remove('hide-element');
 
-    fromPlace.value = '';
-    fromDate.value = '';
-    fromTime.value = '';
-    toPlace.value = '';
-    toDate.value = '';
-    toTime.value = '';
+    TripView.flight.addCTAView.fromPlace.value = '';
+    TripView.flight.addCTAView.fromDate.value = '';
+    TripView.flight.addCTAView.fromTime.value = '';
+    TripView.flight.addCTAView.toPlace.value = '';
+    TripView.flight.addCTAView.toDate.value = '';
+    TripView.flight.addCTAView.toTime.value = '';
 
-    addFlightTicketBtn.classList.add('hide-element');
-    newFlightTicketBtn.classList.remove('hide-element');
+    TripView.flight.addCTABtn.classList.add('hide-element');
+    TripView.flight.addCTAView.newEntryCTABtn.classList.remove('hide-element');
   });
 
-  newFlightTicketBtn.addEventListener('click', (event) => {
-    newFlightTicketCTA.classList.add('hide-element');
-    withFlightDataDisplay.classList.remove('hide-element');
+  TripView.flight.addCTAView.newEntryCTABtn.addEventListener('click', (event) => {
+    TripView.flight.addCTAView.viewContainer.classList.add('hide-element');
+    TripView.flight.withDataContainer.classList.remove('hide-element');
 
-    let newTicket = new FlightTicket(fromPlace.value, fromDate.value, fromTime.value, toPlace.value, toDate.value, toTime.value);
+    let newTicket = new FlightTicket(TripView.flight.addCTAView.fromPlace.value,
+                                     TripView.flight.addCTAView.fromDate.value,
+                                     TripView.flight.addCTAView.fromTime.value,
+                                     TripView.flight.addCTAView.toPlace.value,
+                                     TripView.flight.addCTAView.toDate.value,
+                                     TripView.flight.addCTAView.toTime.value);
 
     try {
       searchResult.flights.push(newTicket);
-      withFlightDataDisplay.appendChild(createFlightTicketDisplay(newTicket));
+      TripView.flight.withDataContainer.appendChild(createFlightTicketDisplay(newTicket));
     }
     catch(error) {
       console.log('******************** Error Creating New Flight Ticket ******************** \n', error);
@@ -281,48 +317,48 @@ function addSearchCTAEventListeners() {
 
     console.log(searchResult.flights);
 
-    newFlightTicketBtn.classList.add('hide-element');
-    addFlightTicketBtn.classList.remove('hide-element');
+    TripView.flight.addCTAView.newEntryCTABtn.classList.add('hide-element');
+    TripView.flight.addCTABtn.classList.remove('hide-element');
   });
 
   // Add Packing Items
   // To show add new packing item cta
-  addPackingItemEle.addEventListener('click', (event) => {
-    addPackingItemEle.classList.add('hide-element');
-    addNewPackingItemEle.classList.remove('hide-element');
-    addNewPackingItemNameEle.value = '';
+  TripView.packing.addCTABtn.addEventListener('click', (event) => {
+    TripView.packing.addCTABtn.classList.add('hide-element');
+    TripView.packing.addCTAView.viewContainer.classList.remove('hide-element');
+    TripView.packing.addCTAView.itemName.value = '';
   });
   // To add new packing item
-  addNewPackingItemBtn.addEventListener('click', (event) => {
+  TripView.packing.addCTAView.newEntryCTABtn.addEventListener('click', (event) => {
 
-    if(addNewPackingItemNameEle.value == '') {
-      addPackingItemEle.classList.remove('hide-element');
-      addNewPackingItemEle.classList.add('hide-element');
+    if(TripView.packing.addCTAView.itemName.value == '') {
+      TripView.packing.addCTABtn.classList.remove('hide-element');
+      TripView.packing.addCTAView.viewContainer.classList.add('hide-element');
       return;
     }
 
     if (!searchResult.packingList.length) {
-      noPackingDataEle.classList.add('hide-element');
-      packingListEle.classList.remove('hide-element');
+      TripView.packing.noDataContainer.classList.add('hide-element');
+      TripView.packing.withDataContainer.classList.remove('hide-element');
     }
 
     let newItemId = `PackingItem${searchResult.packingList.length + 1}`;
-    let newItem = new PackingItem(newItemId, addNewPackingItemNameEle.value);
+    let newItem = new PackingItem(newItemId, TripView.packing.addCTAView.itemName.value);
 
     try {
       searchResult.packingList.push(newItem);
-      packingListEle.appendChild(createPackingItemDisplay(newItem));
+      TripView.packing.withDataContainer.appendChild(createPackingItemDisplay(newItem));
     }
     catch(error) {
       console.log('******************** Error Creating New Packing Item ******************** \n', error);
     }
 
     console.log(searchResult.packingList);
-    addPackingItemEle.classList.remove('hide-element');
-    addNewPackingItemEle.classList.add('hide-element');
+    TripView.packing.addCTABtn.classList.remove('hide-element');
+    TripView.packing.addCTAView.viewContainer.classList.add('hide-element');
   });
   // To mark an packing item as packed
-  packingListEle.addEventListener('click', (event) => {
+  TripView.packing.withDataContainer.addEventListener('click', (event) => {
     // console.log(`Clicked Ele: ${event.target.id}`);
     if(!event.target.disabled) {
       if(event.target.checked) {
@@ -338,7 +374,7 @@ function addSearchCTAEventListeners() {
   });
 
   // Save Trip
-  saveTripBtn.addEventListener('click', (event) => {
+  TripView.saveCTABtn.addEventListener('click', (event) => {
 
     if (searchResult.hasOwnProperty('tripId')) {
       for(let trip of savedTrips) {
@@ -355,7 +391,7 @@ function addSearchCTAEventListeners() {
     }
 
     console.log(savedTrips);
-    closeModalBtn.click();
+    TripView.closeCTABtn.click();
   });
 }
 

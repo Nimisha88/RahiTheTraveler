@@ -1,5 +1,5 @@
 /* Example of a Packing List Item
-<div class="packing-list-item">
+<div class="packing-item">
   <input class="hide-element" type="checkbox" id="Toothpaste">
   <label class="item-name" for="Toothpaste">Toothpaste</label>
   <label class="item-selector" for="Toothpaste">
@@ -10,7 +10,7 @@
 
 
 export default (item = {}) => {
-  let listItem = document.createElement('div'); listItem.classList.add('packing-list-item');
+  let listItem = document.createElement('div'); listItem.classList.add('packing-item');
 
   let checkbox = document.createElement('input');
   checkbox.type = 'checkbox';

@@ -1,0 +1,53 @@
+/* -------------------------------------------------------------------------- */
+/* ---------------------------- Generic Styling ----------------------------- */
+/* -------------------------------------------------------------------------- */
+
+body {
+  font-family: $primary-font;
+  background-color: $primary-color;
+  color: $text-color;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 0;
+  // border: 2px solid green;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: $heading-font;
+}
+
+.hide-element {
+  display: none !important;
+}
+
+input{
+  background-color: inherit;
+  border: none;
+
+  &[type='date'] {
+    position: relative;
+  }
+
+  &::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  &::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: auto;
+    height: auto;
+    color: transparent;
+    background: transparent;
+  }
+
+  &:focus {
+    outline: none;
+  }
+}

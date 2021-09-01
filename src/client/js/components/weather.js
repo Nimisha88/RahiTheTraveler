@@ -1,9 +1,12 @@
 export default (data = {}, dataTimeZone = 'America/New_York') => {
+
   let dataDate = new Date(data.date);
   let sunriseTime = (new Date(data.sunrise * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
   let sunrsetTime = (new Date(data.sunset * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
 
-  const weatherData = document.querySelector('.weather');
+  // <div class="with-data weather">
+  let weatherData = document.createElement('div');
+  weatherData.classList.add('with-data', 'weather');
 
   weatherData.appendChild(generateMainData(dataDate.toDateString(), data.maxTemp, data.minTemp, data.feelsLikeTemp));
   weatherData.appendChild(generateWeatherIcon(data.weather));
@@ -61,75 +64,89 @@ function generateWeatherIcon(weather) {
   console.log('Inside Weather Icon');
   let weatherIconData = document.createElement('div');
   weatherIconData.classList.add('weather-data');
-  weatherIconData.innerHTML = fetchWeatherIcon(weather.code);
+  // weatherIconData.innerHTML = fetchWeatherIcon(weather.code);
+  weatherIconData.appendChild(fetchWeatherIcon(weather.code));
   return weatherIconData;
 }
 
 function fetchWeatherIcon(code) {
-  let iconHTML;
+  let weatherIcon = document.createElement('i');
+  weatherIcon.classList.add('fas', 'fa-3x', 'modal-item-icon', 'weather');
 
   // Identify which Icon to display
   switch (Math.floor(code/100)) {
 
     case 2:
-      iconHTML = '<i class="fas fa-poo-storm fa-3x weather-icon"></i>';
+      // iconHTML = '<i class="fas fa-poo-storm fa-3x weather-icon"></i>';
+      weatherIcon.classList.add('fa-poo-storm');
       break;
 
     case 3:
-      iconHTML = '<i class="fas fa-cloud-rain fa-3x weather-icon"></i>';
+      // iconHTML = '<i class="fas fa-cloud-rain fa-3x weather-icon"></i>';
+      weatherIcon.classList.add('fa-cloud-rain');
       break;
 
     case 5:
 
       switch (code) {
         case 511:
-          iconHTML = '<i class="far fa-snowflake fa-3x weather-icon"></i>';
+          // iconHTML = '<i class="far fa-snowflake fa-3x weather-icon"></i>';
+          weatherIcon.classList.add('fa-snowflake');
           break;
         case 520:
         case 521:
         case 522:
         case 531:
-          iconHTML = '<i class="fas fa-cloud-showers-heavy fa-3x weather-icon"></i>';
+          // iconHTML = '<i class="fas fa-cloud-showers-heavy fa-3x weather-icon"></i>';
+          weatherIcon.classList.add('fa-cloud-showers-heavy');
           break;
         default:
           // Includes cases: 500 - 504
-          iconHTML = '<i class="fas fa-cloud-sun-rain fa-3x weather-icon"></i>';
+          // iconHTML = '<i class="fas fa-cloud-sun-rain fa-3x weather-icon"></i>';
+          weatherIcon.classList.add('fa-cloud-sun-rain');
           break;
       }
       break;
 
     case 6:
-      iconHTML = '<i class="far fa-snowflake fa-3x weather-icon"></i>';
+      // iconHTML = '<i class="far fa-snowflake fa-3x weather-icon"></i>';
+      weatherIcon.classList.add('fa-snowflake');
       break;
 
     case 7:
-      iconHTML = '<i class="fas fa-smog fa-3x weather-icon"></i>';
+      // iconHTML = '<i class="fas fa-smog fa-3x weather-icon"></i>';
+      weatherIcon.classList.add('fa-smog');
       break;
 
     case 8:
       switch (code) {
         case 801:
-          iconHTML = '<i class="fas fa-cloud-sun fa-3x weather-icon"></i>';
+          // iconHTML = '<i class="fas fa-cloud-sun fa-3x weather-icon"></i>';
+          weatherIcon.classList.add('fa-cloud-sun');
           break;
         case 802:
         case 803:
         case 804:
-          iconHTML = '<i class="fas fa-cloud fa-3x weather-icon"></i>';
+          // iconHTML = '<i class="fas fa-cloud fa-3x weather-icon"></i>';
+          weatherIcon.classList.add('fa-cloud');
           break;
         default:
           // Includes case: 800
-          iconHTML = '<i class="fas fa-sun fa-3x weather-icon"></i>';
+          // iconHTML = '<i class="fas fa-sun fa-3x weather-icon"></i>';
+          weatherIcon.classList.add('fa-sun');
           break;
       }
       break;
 
     default:
       // Show barometer if nothing matches!
-      iconHTML = '<i class="fas fa-temperature-high fa-3x weather-icon"></i>';
+      // iconHTML = '<i class="fas fa-temperature-high fa-3x weather-icon"></i>';
+      weatherIcon.classList.add('fa-temperature-high');
       break;
   }
 
-  return iconHTML;
+  // return iconHTML;
+  return weatherIcon;
 }
 
 /* <div class="weather-data other-data">

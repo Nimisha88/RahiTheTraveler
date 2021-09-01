@@ -57,6 +57,12 @@ const PixabayAPI = {
   apiKey: 'key='
 }
 
+// JS Object with RestCountriesAPI base URL and other constants
+const RestCountriesAPI = {
+  baseURL: 'https://restcountries.eu',
+  countryCodeEP: '/rest/v2/alpha/'
+}
+
 // Data Object to store app specific GeonameAPI Data
 function Geonames(apiDataObj) {
   this.status = 200;
@@ -107,6 +113,20 @@ function DestinationGraphics(apiDataObj) {
   this.pixabayUser = apiDataObj.user;
 }
 
+// Data Obj to store app spec RestCountriesAPI Data
+
+function CountryInfo(apiDataObj) {
+  this.status = 200;
+  this.type = 'countryinfo';
+  this.name = apiDataObj.name;
+  this.capital = apiDataObj.capital;
+  this.timeZone = apiDataObj.timezones;
+  this.nativeName = apiDataObj.nativeName;
+  this.currency = apiDataObj.currencies[0];
+  this.firstLang = apiDataObj.languages[0];
+  this.flag = apiDataObj.flag;
+}
+
 // Main Data Object to store all app spec data for an entry
 function UserEntry(apiDataObj) {
   this.destination = apiDataObj.destination;
@@ -115,4 +135,4 @@ function UserEntry(apiDataObj) {
   this.packingList = [];
 }
 
-module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics }
+module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics }

@@ -71,7 +71,7 @@
           <img id="loc-img" class="loc-img" src="" alt="Location Image">
           <div class="loc-data">
             <h1 id="loc-name">Mumbai, India</h1>
-            <h3 id="local-datetime">Thurs, Aug 26th, 2021</h3>
+            <h3 id="loc-date">Thurs, Aug 26th, 2021</h3>
           </div>
           <div class="save-trip-cta">
             <input type="button" id="save-trip-btn" value="Save Trip">
@@ -79,20 +79,21 @@
         </div>
         <div class="modal-data">
           <div class="modal-items col">
-            <div class="modal-item weather"></div><!-- Weather-->
+            <!-- Weather-->
+            <div class="modal-item weather"></div>
             <!-- Packing Start -->
             <div class="modal-item packing">
-              <i class="fas fa-briefcase fa-3x packing-icon"></i>
-              <div class="no-packing-data">
+              <i class="fas fa-briefcase fa-3x modal-item-icon packing"></i>
+              <div class="no-data packing">
                 <h1>Packing List</h1>
                 <h4 class="text-alt">Want to add an item?</h4>
               </div>
-              <div class="with-packing-data packing-list hide-element"></div>
-              <div class="packing-cta">
-                <div id="add-packing-item" class="add-item">
+              <div class="with-data packing hide-element"></div>
+              <div class="modal-item-cta packing">
+                <div class="add-item packing">
                   <i class="fas fa-plus-circle add-icon"></i>
                 </div>
-                <div id="new-packing-item" class="hide-element">
+                <div class="new-item packing hide-element">
                   <input type="text" name="item-name" placeholder="Item name ..." autocomplete="off">
                   <i class="fas fa-chevron-circle-right"></i>
                 </div>
@@ -101,14 +102,14 @@
             <!-- Packing End -->
           </div>
           <div class="modal-items alt-col">
-            <!-- Flights Start -->
-            <div class="modal-item flights">
-              <p><i class="fas fa-plane fa-3x flight-icon"></i></p>
-              <div class="no-flight-data">
+            <!-- Flight Start -->
+            <div class="modal-item flight">
+              <i class="fas fa-plane fa-3x modal-item-icon flight"></i>
+              <div class="no-data flight">
                 <h1>Flight Tickets</h1>
                 <h4 class="text-alt">Want to add one?</h4>
               </div>
-              <div class="new-flight-ticket-cta hide-element">
+              <div class="modal-item-cta-input flight hide-element">
                 <div class="from-place">
                   <input type="text" id="from-place" name="from-place" placeholder="From?" autocomplete="off">
                 </div>
@@ -132,20 +133,19 @@
                   <input type="time" id="to-time" name="to-time">
                 </div>
               </div>
-              <div class="with-flight-data tickets hide-element"></div>
-              <div class="flight-cta">
-                <div id="add-flight-ticket" class="add-item">
+              <div class="with-data flight hide-element"></div>
+              <div class="modal-item-cta flight">
+                <div class="add-item flight">
                   <i class="fas fa-plus-circle"></i>
                 </div>
-                <div id="new-flight-ticket" class="add-item hide-element">
+                <div class="new-item flight hide-element">
                   <i class="fas fa-chevron-circle-right"></i>
                 </div>
               </div>
             </div>
             <!-- Flights End -->
-            <div class="modal-item">
-              <div class="add-item"><i class="fas fa-plus-circle"></i></div>
-            </div>
+            <!-- Country Info -->
+            <div class="modal-item country-info"></div>
           </div>
         </div>
       </div>
