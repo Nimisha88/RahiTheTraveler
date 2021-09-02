@@ -13,7 +13,7 @@ const backdropImgEle = document.querySelector('.page.img-backdrop');
 const heroImgEle = document.querySelector('.hero-img.img-backdrop');
 const locationImgEle = document.getElementById('loc-img');
 const savedTripBackdropEle = document.querySelector('.saved-trips.img-backdrop');
-const savedTripBookmarkEle = document.getElementById('bm-image');
+const aboutUsBackdropEle = document.querySelector('.about-us.img-backdrop');
 
 const loadNavStaticAssets = () => {
   appIconEle.href = appIcon;
@@ -31,8 +31,15 @@ const loadModalFallbackAsset = () => {
 
 const loadSavedTripStaticAsset = () => {
   savedTripBackdropEle.src = savedTripBackdrop;
-  savedTripBookmarkEle.src = locFallbackImg;
+}
+
+const loadAboutUsStaticAsset = () => {
+  aboutUsBackdropEle.src = lpBackdrop;
+}
+
+const loadBookmarkFallbackAsset = (tripId) => {
+  document.querySelector(`.bm-image.${tripId}`).src = locFallbackImg;
 }
 
 
-export { loadNavStaticAssets, loadSearchStaticAssets, loadModalFallbackAsset, loadSavedTripStaticAsset }
+export { loadNavStaticAssets, loadSearchStaticAssets, loadModalFallbackAsset, loadSavedTripStaticAsset, loadBookmarkFallbackAsset, loadAboutUsStaticAsset }

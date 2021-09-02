@@ -103,7 +103,7 @@ function DayWiseWeatherData(apiDataObj) {
 // Data Obj to store app spec PixabayAPI Data
 function DestinationGraphics(apiDataObj) {
   this.status = 200;
-  this.type = 'graphic';
+  this.type = 'graphics';
   this.imgID = apiDataObj.id;
   this.imgTags = apiDataObj.tags;
   this.previewURL = apiDataObj.previewURL;

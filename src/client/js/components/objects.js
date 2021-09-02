@@ -61,6 +61,12 @@ const TripView = {
   }
 }
 
+const SavedTripsView = {
+  viewContainer: document.getElementById('saved-trips'),
+  noDataContainer: document.querySelector('.no-data.bookmarks'),
+  withDataContainer: document.querySelector('.with-data.bookmarks'),
+}
+
 function UserEntry(destination, startDate) {
   this.destination = destination;
   this.startDate = startDate;
@@ -81,4 +87,4 @@ function PackingItem(id, name, isPacked=false) {
   this.isPacked = isPacked;
 }
 
-export { GetStartedView, SearchView, TripView, UserEntry, FlightTicket, PackingItem }
+export { GetStartedView, SearchView, TripView, SavedTripsView, UserEntry, FlightTicket, PackingItem }

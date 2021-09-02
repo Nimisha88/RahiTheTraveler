@@ -16,7 +16,7 @@
     <!-- <link rel="stylesheet" href="../styles/appStyle.css"> -->
   </head>
   <body>
-    <div class="webpage">
+    <div id="home" class="webpage section">
       <img class="page img-backdrop" src="" alt="Backdrop Image">
       <header id="navigation" class="navigation">
         <div class="nav-logo">
@@ -25,9 +25,9 @@
         <div class="nav-filler"></div>
         <div class="nav-links">
           <ul>
-            <li class="nav-link"><a href="#">About Us</a></li>
-            <li class="nav-link"><a href="#">Trips</a></li>
-            <li class="nav-link selected"><a href="#">Home</a></li>
+            <li class="nav-link"><a id="" href="#about-us">About Us</a></li>
+            <li class="nav-link"><a id="" href="#saved-trips">Trips</a></li>
+            <li class="nav-link active"><a id="" href="#home">Home</a></li>
           </ul>
         </div>
       </header>
@@ -150,7 +150,7 @@
         </div>
       </div>
     </section>
-    <section id="saved-trips" class="saved-trips container">
+    <section id="saved-trips" class="saved-trips container section">
       <img id="saved-trip-backdrop" class="saved-trips img-backdrop" src="" alt="Backdrop Image">
       <div class="no-data bookmarks">
         <div class="quote-icon">
@@ -164,33 +164,15 @@
           <h4>Let's make some <span><em>memories</em></span>, bookmark your <span><em>first trip</em></span> with us today!</h4>
         </div>
       </div>
-      <div class="with-data bookmarks hide-element">
-        <div class="bookmark">
-          <div id="SavedTrip1" class="bm-remove"><i class="fas fa-times"></i></div>
-          <div class="bm-data image">
-            <img id="bm-image" src="" alt="Destination Image">
-          </div>
-          <div class="bm-data loc">
-            <h3 class="bm-data dest">Mumbai, India</h3>
-            <h6 class="bm-data date">Thurs, Aug 26th, 2021</h6>
-          </div>
-        </div>
-        <!-- <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div>
-        <div class="bookmark"></div> -->
-      </div>
+      <div class="with-data bookmarks hide-element"></div>
+    </section>
+    <section id="about-us" class="about-us section">
+      <img class="about-us img-backdrop" src="" alt="Backdrop Image">
     </section>
     <footer id="footer">
       <div class="copyright footer">
         <h4>© 2021 Rahi, The Traveler. All rights reserved.</h4>
+        <h6>Developed by Nimisha Viraj</h6>
       </div>
     </footer>
     <!-- Add Script -->

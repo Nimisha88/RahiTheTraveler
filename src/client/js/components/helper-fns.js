@@ -13,7 +13,7 @@ export function toTwoDigit(val) {
 }
 
 export function destructElementChildren(element) {
-  console.log('******************** Destructing Elements ******************** \n');
+  // console.log('******************** Destructing Elements ******************** \n');
   while(element.firstChild) {
     element.removeChild(element.lastChild);
   }

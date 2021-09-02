@@ -61,7 +61,6 @@ function generateMainData(date, maxTemp, minTemp, feelsLikeTemp) {
   </div> */
 
 function generateWeatherIcon(weather) {
-  console.log('Inside Weather Icon');
   let weatherIconData = document.createElement('div');
   weatherIconData.classList.add('weather-data');
   // weatherIconData.innerHTML = fetchWeatherIcon(weather.code);

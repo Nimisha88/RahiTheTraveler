@@ -92,6 +92,11 @@
     -webkit-box-shadow: 3px 3px 5px $box-shadow-black, 1px 1px 7px $secondary-color;
     box-shadow: 3px 3px 5px $box-shadow-black, 1px 1px 7px $secondary-color;
 
+    &:hover {
+      transform: scale(1.1, 1.1);
+      transition: all 1s ease-in-out;
+    }
+
     .bm-remove {
       position: absolute;
       padding: 0 0.25rem;

@@ -190,7 +190,7 @@ async function processPostRequest() {
   console.log(JSON.stringify(imgResult));
   // Remove this logic when default pic is available
   if (isPicFound) {
-    lastUserEntryLookup.graphic = new DestinationGraphics(imgResult);
+    lastUserEntryLookup.graphics = new DestinationGraphics(imgResult);
   }
 
   // Call to Rest Rest Countries
@@ -272,9 +272,9 @@ lastUserEntryLookup = {
       "wind" : "156 NE"
     }]
   },
-  "graphic": {
+  "graphics": {
     "status": 200,
-    "type": "graphic",
+    "type": "graphics",
     "imgID": 1370023,
     "imgTags": "mumbai, bombs, gateway of india",
     "previewURL": "https://cdn.pixabay.com/photo/2016/05/03/20/01/mumbai-1370023_150.jpg",
