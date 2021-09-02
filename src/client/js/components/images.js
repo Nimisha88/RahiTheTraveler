@@ -9,10 +9,10 @@ import savedTripBackdrop from '../../assets/saved-trip-backdrop.png';
 
 const appIconEle = document.querySelector('.app-icon');
 const appLogoEle = document.getElementById('app-logo');
-const backdropImgEle = document.querySelector('.img-backdrop');
-const heroImgEle = document.querySelector('.hero-img');
+const backdropImgEle = document.querySelector('.page.img-backdrop');
+const heroImgEle = document.querySelector('.hero-img.img-backdrop');
 const locationImgEle = document.getElementById('loc-img');
-const savedTripBackdropEle = document.getElementById('saved-trip-backdrop');
+const savedTripBackdropEle = document.querySelector('.saved-trips.img-backdrop');
 const savedTripBookmarkEle = document.getElementById('bm-image');
 
 const loadNavStaticAssets = () => {

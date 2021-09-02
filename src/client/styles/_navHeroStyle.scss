@@ -10,12 +10,12 @@
   align-items: center;
   // border: 1px solid red;
 
-  img.img-backdrop {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-  }
+  // img.img-backdrop {
+  //   position: absolute;
+  //   width: 100%;
+  //   height: 100%;
+  //   z-index: -1;
+  // }
 }
 
 .navigation {
@@ -78,13 +78,7 @@
   box-shadow: 2px 2px 15px $box-shadow-black, 1px 1px 25px $secondary-color;
 
   img.hero-img {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
     border-radius: 10px;
-    z-index: -1;
   }
 }
 

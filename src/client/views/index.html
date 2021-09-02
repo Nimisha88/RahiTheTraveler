@@ -17,7 +17,7 @@
   </head>
   <body>
     <div class="webpage">
-      <img class="img-backdrop" src="" alt="Backdrop Image">
+      <img class="page img-backdrop" src="" alt="Backdrop Image">
       <header id="navigation" class="navigation">
         <div class="nav-logo">
           <img src="" id="app-logo" alt="App Logo">
@@ -32,7 +32,7 @@
         </div>
       </header>
       <section id="hero" class="hero">
-        <img class="hero-img" src="" alt="Hero Image">
+        <img class="hero-img img-backdrop" src="" alt="Hero Image">
         <div class="get-started">
           <div class="get-started-text">
             <p>What do you like to do on your trips?</p>
@@ -150,17 +150,29 @@
         </div>
       </div>
     </section>
-    <section id="saved-trips" class="saved-trips">
-      <img id="saved-trip-backdrop" class="img-backdrop saved-trip-backdrop" src="" alt="Backdrop Image">
-      <div class="with-data bookmarks">
+    <section id="saved-trips" class="saved-trips container">
+      <img id="saved-trip-backdrop" class="saved-trips img-backdrop" src="" alt="Backdrop Image">
+      <div class="no-data bookmarks">
+        <div class="quote-icon">
+          <i class="fas fa-quote-left fa-10x"></i>
+        </div>
+        <div class="bm-data travel-quote">
+          <h1 class="quote">You can shake the sand from your shoes, but not from your soul</h1>
+          <h4 class="quote-author text-alt">~ Ek Rahi, A Traveler</h4>
+        </div>
+        <div class="bm-data section-text">
+          <h4>Let's make some <span><em>memories</em></span>, bookmark your <span><em>first trip</em></span> with us today!</h4>
+        </div>
+      </div>
+      <div class="with-data bookmarks hide-element">
         <div class="bookmark">
-          <div class="bm-image">
-            <div class="bm-remove"><i class="fas fa-times"></i></div>
+          <div id="SavedTrip1" class="bm-remove"><i class="fas fa-times"></i></div>
+          <div class="bm-data image">
             <img id="bm-image" src="" alt="Destination Image">
           </div>
-          <div class="bm-data">
-            <h3 class="bm-data-dest">Mumbai, India</h3>
-            <h6 class="bm-data-date">Thurs, Aug 26th, 2021</h6>
+          <div class="bm-data loc">
+            <h3 class="bm-data dest">Mumbai, India</h3>
+            <h6 class="bm-data date">Thurs, Aug 26th, 2021</h6>
           </div>
         </div>
         <!-- <div class="bookmark"></div>
