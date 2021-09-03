@@ -17,13 +17,6 @@
   }
 }
 
-.bookmarks {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  // border: 1px solid green;
-}
-
 .no-data.bookmarks {
   width: 60%;
   height: 60%;
@@ -75,14 +68,37 @@
   }
 }
 
-.with-data.bookmarks {
-  flex-flow: column wrap;
+.with-data.container {
   width: 90%;
   height: 90%;
+  display: grid;
+  grid-template-columns: 100%;
+  grid-template-rows: 15% 85%;
+
+  h1.header.bookmarks {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+
+    i {
+      color: $accent-color;
+      margin-right: 1rem;
+    }
+  }
+}
+
+.with-data.bookmarks {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
   overflow: auto;
+  // border: 1px solid green;
 
   .bookmark {
     position: relative;
+    margin: 0.5rem;
     width: 10rem;
     height: 15rem;
     display: grid;

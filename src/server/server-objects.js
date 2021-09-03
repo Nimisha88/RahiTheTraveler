@@ -135,4 +135,4 @@ function UserEntry(apiDataObj) {
   this.packingList = [];
 }
 
-module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics }
+module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics, CountryInfo }

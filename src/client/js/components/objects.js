@@ -64,7 +64,8 @@ const TripView = {
 const SavedTripsView = {
   viewContainer: document.getElementById('saved-trips'),
   noDataContainer: document.querySelector('.no-data.bookmarks'),
-  withDataContainer: document.querySelector('.with-data.bookmarks'),
+  withDataContainer: document.querySelector('.with-data.container'),
+  bookmarks: document.querySelector('.with-data.bookmarks'),
 }
 
 function UserEntry(destination, startDate) {

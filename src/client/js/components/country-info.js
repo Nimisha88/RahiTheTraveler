@@ -25,13 +25,13 @@ export default (data = {}) => {
 
   let mainData = document.createElement('div');
   mainData.classList.add('country-info-data', 'main');
-  let nativeName = document.createElement('h5');
+  let nativeName = document.createElement('h6');
   nativeName.classList.add('native-name', 'text-alt');
   nativeName.textContent = data.nativeName;
   let countryName = document.createElement('h1');
   countryName.classList.add('country-name');
   countryName.textContent = data.name;
-  let capitalName = document.createElement('h5');
+  let capitalName = document.createElement('h6');
   capitalName.classList.add('capital-name', 'text-alt');
   capitalName.textContent = data.capital;
 
@@ -46,7 +46,7 @@ export default (data = {}) => {
 
   let currencyData = document.createElement('div');
   currencyData.classList.add('country-info-data', 'currency');
-  let currencyCode = document.createElement('h5');
+  let currencyCode = document.createElement('h6');
   currencyCode.classList.add('currency-code', 'text-alt');
   // let currencySymbol = document.createElement('span');
   // currencySymbol.classList.add('curr-symbol');
@@ -56,7 +56,7 @@ export default (data = {}) => {
 
   let otherData = document.createElement('div');
   otherData.classList.add('country-info-data', 'other');
-  let firstLang = document.createElement('h5');
+  let firstLang = document.createElement('h6');
   firstLang.classList.add('first-lang', 'text-alt');
   // firstLang.value = data.language.nativeName;
   firstLang.innerHTML = `${data.firstLang.nativeName}<i class="fas fa-pencil-alt lang-icon"></i>`;

@@ -4,7 +4,16 @@
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-const { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics } = require('./server-objects.js');
+const { UserEntry,
+        WeatherbitAPI,
+        GeonamesAPI,
+        PixabayAPI,
+        RestCountriesAPI,
+        Geonames,
+        Weather,
+        DayWiseWeatherData,
+        DestinationGraphics,
+        CountryInfo } = require('./server-objects.js');
 
 
 // ----------------------------------------------------------------------------
@@ -86,7 +95,7 @@ async function lookupDestination(place, maxResults=1) {
 
 }
 
-async function lookupWeather(lat, lng, days='7', units='I') {
+async function lookupWeather(lat, lng, days='8', units='I') {
 
   console.log(WeatherbitAPI.baseURL+WeatherbitAPI.forecastEP+
                                WeatherbitAPI.latitue+lat+also+
@@ -137,9 +146,9 @@ async function lookupCityImage(place, category='travel', type='photo') {
 
 async function lookupCountryInfo(countryCode) {
 
-  console.log(RestCountriesAPI.baseURL+RestCountriesAPIcountryCodeEP+countryCode);
+  console.log(RestCountriesAPI.baseURL+RestCountriesAPI.countryCodeEP+countryCode);
 
-  const response = await fetch(RestCountriesAPI.baseURL+RestCountriesAPIcountryCodeEP+countryCode);
+  const response = await fetch(RestCountriesAPI.baseURL+RestCountriesAPI.countryCodeEP+countryCode);
 
   try {
     const json = await response.json();
@@ -159,7 +168,7 @@ async function processPostRequest() {
   lastUserEntryLookup.geoname = new Geonames(apiResult.geonames[0]);
 
   // Call to Weatherbit
-  apiResult = await lookupWeather(lastUserEntryLookup.geoname.latitude, lastUserEntryLookup.geoname.longitude, 3);
+  apiResult = await lookupWeather(lastUserEntryLookup.geoname.latitude, lastUserEntryLookup.geoname.longitude);
   lastUserEntryLookup.weather = new Weather(apiResult);
 
   for (let dayWiseWeatherData of apiResult.data) {
@@ -205,102 +214,117 @@ async function processPostRequest() {
 // -----------------------------------------------------------------------------
 
 lastUserEntryLookup = {
-  "destination": "Mumbai",
-  "startDate": "2021-08-25",
+  "destination": "New York",
+  "startDate": "2021-09-21",
   "flights": [],
   "packingList": [],
   "geoname": {
     "status": 200,
     "type": "geoname",
-    "city": "Mumbai",
-    "state": "16",
-    "countryCode": "IN",
-    "countryName": "India",
-    "latitude": "19.07283",
-    "longitude": "72.88261"
+    "city": "New York City",
+    "state": "NY",
+    "countryCode": "US",
+    "countryName": "United States",
+    "latitude": "40.71427",
+    "longitude": "-74.00597"
   },
   "weather": {
     "status": 200,
     "type": "weather",
-    "city": "Mumbai",
-    "latitude": 19.07,
-    "longitude": 72.88,
-    "timezone": "Asia/Kolkata",
-    "countryCode": "IN",
-    "state": "16",
+    "city": "New York City",
+    "latitude": 40.71,
+    "longitude": -74.01,
+    "timezone": "America/New_York",
+    "countryCode": "US",
+    "state": "NY",
     "data": [{
-      "date": "2021-08-20",
+      "date": "2021-09-02",
       "weather": {
-        "icon": "c04d",
-        "code": 804,
-        "description": "Overcast clouds"
+        "icon": "t03d",
+        "code": 202,
+        "description": "Thunderstorm with heavy rain"
       },
-      "maxTemp": 29.3,
-      "minTemp": 24.2,
-      "feelsLikeTemp": 32,
-      "sunrise": 1629420655,
-      "sunset": 1629466518,
-      "humidity": 20,
-      "wind" : "156 NE",
+      "maxTemp": 73.5,
+      "minTemp": 58.1,
+      "feelsLikeTemp": 73,
+      "humidity": 80,
+      "wind": "13.9 NW",
+      "sunrise": 1630578251,
+      "sunset": 1630625073
     }, {
-      "date": "2021-08-21",
+      "date": "2021-09-03",
       "weather": {
-        "icon": "r03d",
-        "code": 502,
-        "description": "Heavy rain"
+        "icon": "c02d",
+        "code": 801,
+        "description": "Few clouds"
       },
-      "maxTemp": 25.1,
-      "minTemp": 24,
-      "feelsLikeTemp": 26,
-      "sunrise": 1629507071,
-      "sunset": 1629552873,
-      "humidity": 20,
-      "wind" : "156 NE"
+      "maxTemp": 70.7,
+      "minTemp": 54.4,
+      "feelsLikeTemp": 70.3,
+      "humidity": 83,
+      "wind": "7.2 NW",
+      "sunrise": 1630664709,
+      "sunset": 1630711376
     }, {
-      "date": "2021-08-22",
+      "date": "2021-09-04",
       "weather": {
-        "icon": "r01d",
-        "code": 500,
-        "description": "Light rain"
+        "icon": "c02d",
+        "code": 801,
+        "description": "Few clouds"
       },
-      "maxTemp": 28.6,
-      "minTemp": 24.2,
-      "feelsLikeTemp": 31,
-      "sunrise": 1629593487,
-      "sunset": 1629639226,
-      "humidity": 20,
-      "wind" : "156 NE"
+      "maxTemp": 78.6,
+      "minTemp": 60.1,
+      "feelsLikeTemp": 77.1,
+      "humidity": 48,
+      "wind": "5.7 W",
+      "sunrise": 1630751167,
+      "sunset": 1630797678
+    }, {
+      "date": "2021-09-04",
+      "weather": {
+        "icon": "c02d",
+        "code": 801,
+        "description": "Few clouds"
+      },
+      "maxTemp": 70.7,
+      "minTemp": 54.4,
+      "feelsLikeTemp": 70.3,
+      "humidity": 83,
+      "wind": "7.2 NW",
+      "sunrise": 1630664709,
+      "sunset": 1630711376
     }]
   },
   "graphics": {
     "status": 200,
     "type": "graphics",
-    "imgID": 1370023,
-    "imgTags": "mumbai, bombs, gateway of india",
-    "previewURL": "https://cdn.pixabay.com/photo/2016/05/03/20/01/mumbai-1370023_150.jpg",
-    "webformatURL": "https://pixabay.com/get/gad8ddafbf3817c18e29ba01ebdd4df9bda808f814cb5d9f452b09be421ed52f7a3e37434994b16f7e0e48418bf1de27a61b8b400895c63caceb297415057d099_640.jpg",
-    "largeImageURL": "https://pixabay.com/get/g9fb5dfc8d2de4d75832a7f941e09b0f34f5b93756ce3b1eeb2bec2680544a5f48f386b7defae624f3492953d2fdc6988da1d0e8c52a09848318b4ace1b9009d6_1280.jpg",
-    "pixabayUserID": 1409366,
-    "pixabayUser": "Walkerssk"
+    "imgID": 1081929,
+    "imgTags": "empire state building, usa, new york city",
+    "previewURL": "https://cdn.pixabay.com/photo/2015/12/08/00/40/empire-state-building-1081929_150.jpg",
+    "webformatURL": "https://pixabay.com/get/gab3bf2ef6a1dfddd14036f3541bff52b6cabc6f21730e461d16a29959d6d6906ccc5dbea1cfeb1061d00d66894eac8ebeb19ff891183cf39c2276f463c298dc1_640.jpg",
+    "largeImageURL": "https://pixabay.com/get/gfc480d521fbb710a440ea9b89590afffa70bcdce99184e73143d5bf5ddf0af3e14f623614883c1c59a26cb049ddba8504be719b610ca8920cc012648392d4f27_1280.jpg",
+    "pixabayUserID": 242387,
+    "pixabayUser": "Free-Photos"
   },
   "countryinfo": {
     "status": 200,
-    "type": "country-info",
-    "name": "India",
-    "capital": "New Delhi",
-    "nativeName": "भारत",
+    "type": "countryinfo",
+    "name": "United States of America",
+    "capital": "Washington, D.C.",
+    "timeZone": ["UTC-12:00", "UTC-11:00", "UTC-10:00", "UTC-09:00", "UTC-08:00", "UTC-07:00", "UTC-06:00", "UTC-05:00", "UTC-04:00", "UTC+10:00", "UTC+12:00"],
+    "nativeName": "United States",
     "currency": {
-      "code": "INR",
-      "name": "Indian rupee",
-      "symbol": "₹"
+      "code": "USD",
+      "name": "United States dollar",
+      "symbol": "$"
     },
     "firstLang": {
-      "iso639_1": "hi",
-      "iso639_2": "hin",
-      "name": "Hindi",
-      "nativeName": "हिन्दी"
+      "iso639_1": "en",
+      "iso639_2": "eng",
+      "name": "English",
+      "nativeName": "English"
     },
-    "flag": "https://restcountries.eu/data/ind.svg"
+    "flag": "https://restcountries.eu/data/usa.svg"
   }
 }
 

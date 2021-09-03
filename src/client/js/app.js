@@ -288,7 +288,7 @@ const addTripModalEventListeners = () => {
 }
 
 const createBookmark = (tripId) => {
-  SavedTripsView.withDataContainer.appendChild(createBookmarkDisplay(savedTrips[tripId]));
+  SavedTripsView.bookmarks.appendChild(createBookmarkDisplay(savedTrips[tripId]));
 
   let Bookmark = {
     viewContainer: document.querySelector(`.bookmark.${tripId}`),
