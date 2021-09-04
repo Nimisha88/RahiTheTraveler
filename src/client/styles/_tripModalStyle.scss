@@ -19,7 +19,7 @@
   .close-modal {
     position: absolute;
     top: 5.5%;
-    right: 11.5%;
+    right: 9.5%;
     padding: 0 0.5rem;
     background-color: $primary-color;
     border-radius: 50%;
@@ -64,7 +64,7 @@
 
 .modal-container {
   position: relative;
-  width: 75%;
+  width: 80%;
   height: 85%;
   display: grid;
   grid-template-columns: 50% 50%;
@@ -491,6 +491,7 @@
       justify-content: center;
 
       div.modal-item-icon.country-info {
+        margin-left: 1rem;
         padding: 0;
         width: 4rem;
         height: 4rem;

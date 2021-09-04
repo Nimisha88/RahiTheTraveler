@@ -38,10 +38,11 @@ import {
 // -----------------------------------------------------------------------------
 
 const todaysDate = new Date();
+let nextWeeksDate = new Date(); nextWeeksDate.setDate(nextWeeksDate.getDate() + 6);
 const defaultTime = '12:30';
 const minDateInput = `${todaysDate.getFullYear()}-${HelperFns.toTwoDigit(todaysDate.getMonth()+1)}-${HelperFns.toTwoDigit(todaysDate.getDate())}`;
+let savedTrips = HelperFns.getLocalStorage('SavedTrips');
 let tripInDisplay = {};
-let savedTrips = {};
 
 
 // -----------------------------------------------------------------------------
@@ -51,6 +52,20 @@ let savedTrips = {};
 // displayModal() - Display trip details in the modal
 // processSearchRequest() - Process User Request
 // -----------------------------------------------------------------------------
+
+function loadSavedTrips() {
+  console.log(savedTrips);
+  let tripIds = Object.keys(savedTrips);
+  console.log("Inside saved trips: " + tripIds);
+  if (!tripIds.length) {
+    return;
+  }
+  SavedTripsView.noDataContainer.classList.add('hide-element');
+  SavedTripsView.withDataContainer.classList.remove('hide-element');
+  for (let tripId of tripIds) {
+    createBookmark(tripId);
+  }
+}
 
 function displayModal() {
   TripView.viewContainer.classList.remove('hide-element');
@@ -65,8 +80,22 @@ function displayModal() {
   TripView.location.name.textContent = tripInDisplay.destination;
   TripView.location.date.textContent = (new Date(tripInDisplay.startDate)).toUTCString().slice(0,16);
 
-  TripView.weather.viewContainer.appendChild(createWeatherDisplay(tripInDisplay.weather.data[0], tripInDisplay.weather.timezone));
-  TripView.countryinfo.viewContainer.appendChild(createCountryInfoDisplay(tripInDisplay.countryinfo));
+  if (tripInDisplay.weather.hasOwnProperty('error')) {
+    TripView.weather.viewContainer.appendChild(HelperFns.createErrorDisplay('Weather'));
+  }
+  else {
+    if(+(new Date(tripInDisplay.startDate)) < +nextWeeksDate) {
+      TripView.weather.viewContainer.appendChild(createWeatherDisplay(tripInDisplay.weather.data[0], tripInDisplay.weather.timezone));
+    } else {
+      TripView.weather.viewContainer.appendChild(createWeatherDisplay(tripInDisplay.weather.data[7], tripInDisplay.weather.timezone));
+    }
+  }
+
+  if (tripInDisplay.countryinfo.hasOwnProperty('error')) {
+    TripView.countryinfo.viewContainer.appendChild(HelperFns.createErrorDisplay('Country'));
+  } else {
+    TripView.countryinfo.viewContainer.appendChild(createCountryInfoDisplay(tripInDisplay.countryinfo));
+  }
 
   // Save Trip Logic for Packing Section
   if (!tripInDisplay.packingList.length) {
@@ -106,9 +135,16 @@ async function processSearchRequest() {
     await postAsync('/api/lookupDestination', latestSearchEntry);
     tripInDisplay = await getAsync('/api/getLookupResults');
     // console.log('In Process Request: \n' + JSON.stringify(tripToDisplay));
-    displayModal();
+
+    if(tripInDisplay.geoname.status == 200) {
+      displayModal();
+    } else {
+      alert('Something went wrong with the search. Please verify the location provided and try again');
+    }
+
   } catch (error) {
     console.log('******************** Processing Search Request Failed ******************** \n', error);
+    alert('Server not responding. Please try again later.');
   }
 }
 
@@ -177,6 +213,17 @@ const addTripModalEventListeners = () => {
 
   // NewFlightTicket
   TripView.flight.addCTAView.newEntryCTABtn.addEventListener('click', (event) => {
+
+    if (TripView.flight.addCTAView.fromPlace.value == '' ||
+        TripView.flight.addCTAView.fromDate.value == '' ||
+        TripView.flight.addCTAView.fromTime.value == '' ||
+        TripView.flight.addCTAView.toPlace.value == '' ||
+        TripView.flight.addCTAView.toDate.value == '' ||
+        TripView.flight.addCTAView.toTime.value == '') {
+      alert('To create the Flight Ticket, all fields are mandatory, please verify and provide the missing information.');
+      return;
+    }
+
     TripView.flight.addCTAView.viewContainer.classList.add('hide-element');
     TripView.flight.withDataContainer.classList.remove('hide-element');
 
@@ -260,6 +307,7 @@ const addTripModalEventListeners = () => {
     if(tripInDisplay.hasOwnProperty('tripId')) {
       savedTrips[tripInDisplay.tripId].flights = tripInDisplay.flights;
       savedTrips[tripInDisplay.tripId].packingList = tripInDisplay.packingList;
+      HelperFns.setLocalStorage('SavedTrips', savedTrips);
     }
 
     // ShowGetStarted
@@ -283,6 +331,7 @@ const addTripModalEventListeners = () => {
     savedTrips[tripId] = tripInDisplay;
     createBookmark(tripId);
     // console.log(savedTrips);
+    HelperFns.setLocalStorage('SavedTrips', savedTrips);
     TripView.closeCTABtn.click();
   });
 }
@@ -314,6 +363,7 @@ const createBookmark = (tripId) => {
     HelperFns.destructElementChildren(Bookmark.viewContainer);
     Bookmark.viewContainer.remove();
     delete savedTrips[tripId];
+    HelperFns.setLocalStorage('SavedTrips', savedTrips);
 
     if (!Object.keys(savedTrips).length) {
       SavedTripsView.noDataContainer.classList.remove('hide-element');
@@ -331,3 +381,6 @@ loadAboutUsStaticAsset();
 // Load Event Listeners
 addHeroEventListeners();
 addTripModalEventListeners();
+
+//loadSavedTrips
+loadSavedTrips();

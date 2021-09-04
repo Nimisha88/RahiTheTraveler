@@ -30,7 +30,16 @@ export default (data = {}) => {
   nativeName.textContent = data.nativeName;
   let countryName = document.createElement('h1');
   countryName.classList.add('country-name');
-  countryName.textContent = data.name;
+  if (data.name.length <= 25) {
+    countryName.textContent = data.name;
+  } else {
+    countryName.textContent = data.altNames[0];
+    for (let altName of data.altNames) {
+      if (altName.includes(' ') || altName.length > 3) {
+        countryName.textContent = altName;
+      }
+    }
+  }
   let capitalName = document.createElement('h6');
   capitalName.classList.add('capital-name', 'text-alt');
   capitalName.textContent = data.capital;

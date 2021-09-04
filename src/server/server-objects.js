@@ -64,11 +64,11 @@ const RestCountriesAPI = {
 }
 
 // Data Object to store app specific GeonameAPI Data
-function Geonames(apiDataObj) {
+function Geoname(apiDataObj) {
   this.status = 200;
   this.type = 'geoname';
   this.city = apiDataObj.toponymName;
-  this.state = apiDataObj.adminCode1;
+  // this.state = apiDataObj.adminCode1;
   this.countryCode = apiDataObj.countryCode;
   this.countryName = apiDataObj.countryName;
   this.latitude = apiDataObj.lat;
@@ -124,6 +124,7 @@ function CountryInfo(apiDataObj) {
   this.nativeName = apiDataObj.nativeName;
   this.currency = apiDataObj.currencies[0];
   this.firstLang = apiDataObj.languages[0];
+  this.altNames = apiDataObj.altSpellings;
   this.flag = apiDataObj.flag;
 }
 
@@ -135,4 +136,11 @@ function UserEntry(apiDataObj) {
   this.packingList = [];
 }
 
-module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geonames, Weather, DayWiseWeatherData, DestinationGraphics, CountryInfo }
+// Error Object
+function RequestProcessingError(type='unknown', error={code: 0, msg: 'parsing response error'}) {
+  this.status = '666';
+  this.type = type;
+  this.error = error;
+}
+
+module.exports = { UserEntry, WeatherbitAPI, GeonamesAPI, PixabayAPI, RestCountriesAPI, Geoname, Weather, DayWiseWeatherData, DestinationGraphics, CountryInfo, RequestProcessingError }
