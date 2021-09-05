@@ -8,5 +8,5 @@ import './styles/style.scss';
 import * as eventListeners from './js/components/event-listeners.js';
 
 // Navbar Events
-navbarEventsOnScroll();
-navbarEventsOnClick();
+eventListeners.navbarEventsOnScroll();
+eventListeners.navbarEventsOnClick();

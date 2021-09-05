@@ -12,6 +12,7 @@ import createPackingItemDisplay from './components/packing-item.js';
 import createFlightTicketDisplay from './components/flight-ticket.js';
 import createCountryInfoDisplay from './components/country-info.js';
 import createBookmarkDisplay from './components/bookmark.js';
+import * as eventListeners from './components/event-listeners.js';
 import {
   GetStartedView,
   SearchView,
@@ -130,6 +131,11 @@ function displayModal() {
 async function processSearchRequest() {
   let latestSearchEntry = new UserEntry(SearchView.whereTo.value, SearchView.startDate.value);
   // console.log(JSON.stringify(latestSearchEntry));
+
+  if (!window.navigator.onLine) {
+    alert("You seem to be offline, try again later");
+    return;
+  }
 
   try {
     await postAsync('/api/lookupDestination', latestSearchEntry);
@@ -384,3 +390,28 @@ addTripModalEventListeners();
 
 //loadSavedTrips
 loadSavedTrips();
+
+// Navbar
+eventListeners.navbarEventsOnScroll();
+eventListeners.navbarEventsOnClick();
+eventListeners.navbarBackgroundChangeOnScroll();
+
+// ----------------------------------------------------------------------------
+// Register Service Worker
+// ----------------------------------------------------------------------------
+
+// const devMode = process.argv[process.argv.indexOf('--mode') + 1] !== 'production';
+if ('serviceWorker' in navigator) {
+  window.addEventListener("load", () => {
+    if (!navigator.serviceWorker.getRegistrations().length) {
+      console.log('Registering Service Worker');
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('SW registered: ', registration);
+        })
+        .catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    }
+  });
+}

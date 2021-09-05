@@ -4,21 +4,25 @@
 // -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-function navbarEventsOnClick() {
+export function navbarEventsOnClick() {
+  const navbarContainer = document.getElementById('navigation');
   const navLinks = document.querySelectorAll('.nav-link');
   let activeNavLink = document.querySelector('.nav-link.active');
 
   Array.from(navLinks).map((navLink) => {
     navLink.addEventListener("click", (event) => {
     activeNavLink.classList.remove("active");
-    console.log(event.currentTarget);
     activeNavLink = event.currentTarget;
     activeNavLink.classList.add("active");
+    if(!location.href.includes('#home')) {
+      navbarContainer.classList.add('nav-background');
+    }
+    // location.href = location.href.split('/#');
     })
   });
 }
 
-function navbarEventsOnScroll() {
+export function navbarEventsOnScroll() {
   let activeNavLink = document.querySelector('.nav-link.active');
   const targets = document.querySelectorAll('.section');
 
@@ -42,4 +46,23 @@ function navbarEventsOnScroll() {
   targets.forEach((target) => {
     observer.observe(target);
   });
+}
+
+export function navbarBackgroundChangeOnScroll() {
+  const navbarContainer = document.getElementById('navigation');
+  // const target = document.getElementById('hero');
+  const target = document.querySelector('.navigation-filler');
+
+  let options = {
+    threshold: [0.1]
+  }
+
+  function handleIntersection(entries) {
+    entries.map((entry) => {
+      document.getElementById('navigation').classList.toggle('nav-background');
+    });
+  }
+
+  const observer = new IntersectionObserver(handleIntersection, options);
+  observer.observe(target);
 }
