@@ -41,7 +41,7 @@ const also = '&'; // For framing fetch URLs
 const apiKeyWeatherbit = process.env.APIKeyWeatherbit;
 const apiKeyGeonames = process.env.APIKeyGeonames;
 const apiKeyPixabay = process.env.APIKeyPixabay;
-const port = process.env.ServerPort; // Port for the server to listen at
+const port = 8080; // Port for the server to listen at
 
 
 // ----------------------------------------------------------------------------
@@ -260,7 +260,7 @@ async function processPostRequest() {
     else {
       lastUserEntryLookup.graphics = new DestinationGraphics(imgResult);
     }
-    
+
   }
 
   console.log(JSON.stringify(imgResult));

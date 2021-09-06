@@ -1,4 +1,4 @@
-import * as apiRequest from '../js/components/api-components.js'
+import * as apiRequest from '../js/components/apis.js'
 
 test('Test Post Request', async () => {
   const response = await apiRequest.postAsync("/api/testPost", {});
