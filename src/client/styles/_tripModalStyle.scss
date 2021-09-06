@@ -73,6 +73,7 @@
   background-color: $secondary-color;
   -webkit-box-shadow: 2px 2px 15px $box-shadow-black, 1px 1px 15px $secondary-color;
   box-shadow: 2px 2px 15px $box-shadow-black, 1px 1px 15px $secondary-color;
+  overflow-y: auto;
   // border: 1px solid blue;
 
   .modal-img {
@@ -144,10 +145,6 @@
       font-family: $modal-data-font;
     }
 
-    // .text-alt {
-    //   color: $text-alt-color;
-    // }
-
     .col {
       display: grid;
       grid-template-columns: auto;
@@ -207,9 +204,10 @@
     }
 
     .weather-data {
+      position: relative;
       display: flex;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-end;
       justify-content: center;
       text-align: left;
 
@@ -219,8 +217,8 @@
 
       &.sun-data {
         display: grid;
-        grid-template-columns: auto auto;
-        grid-gap: 10%;
+        grid-template-columns: 78% 18%;
+        grid-gap: 4%;
       }
 
       .sun-riseset, .sun-icon {
@@ -308,7 +306,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      max-height: 200px;
+      max-height: 12rem;
     }
 
     .packing-item {
@@ -394,7 +392,7 @@
       display: flex;
       flex-direction: column;
       width: 100%;
-      max-height: 200px;
+      max-height: 12rem;
       justify-content: stretch;
       border-radius: 10px;
       // border: 1px solid green;
@@ -408,7 +406,7 @@
 		    overflow: hidden;
         display: grid;
         grid-template-columns: 50% 50%;
-        grid-auto-rows: 125px;
+        grid-auto-rows: 8rem;
         // border: 1px solid green;
 
         &:hover {
@@ -469,9 +467,9 @@
     grid-template-rows: 74% 24%;
     grid-gap: 2%;
 
-    .text-label {
-      padding: 0 0 0.5rem;
-    }
+    // .text-label {
+    //   padding: 0 0 0.5rem;
+    // }
 
     .country-info-data.main {
       width: 100%;
@@ -488,7 +486,7 @@
       height: 100%;
       display: flex;
       align-items: center;
-      justify-content: center;
+      justify-content: flex-end;
 
       div.modal-item-icon.country-info {
         margin-left: 1rem;

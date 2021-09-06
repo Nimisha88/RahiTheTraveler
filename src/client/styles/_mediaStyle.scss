@@ -1,0 +1,505 @@
+/* -------------------------------------------------------------------------- */
+/* ------------------------- Small Media Queries ---------------------------- */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 200px) and (max-width: 767px) {
+
+  ::-webkit-input-placeholder,
+  :-ms-input-placeholder,
+  ::placeholder {
+    line-height: 0.75rem;
+    font-size: 0.5rem;
+  }
+
+  body {
+    font-size: 0.5rem;
+  }
+
+  .webpage {
+    height: 28rem;
+  }
+
+  .navigation-filler {
+    height: 6rem;
+  }
+
+  // Navbar
+  .navigation {
+    grid-template-columns: 1fr 0 1fr;
+
+    .nav-logo {
+      img#app-logo {
+        width: 6rem;
+        float: left;
+        margin: 0.2rem 1rem;
+      }
+    }
+  }
+
+  .nav-links {
+    ul {
+      grid-template-columns: 34% repeat(2, 28%);
+    }
+  }
+
+  // Get Started
+  .get-started-text {
+    top: 27%;
+
+    h1 {
+      font-size: 1.25rem;
+
+      i.fas {
+        font-size: 0.25rem;
+      }
+    }
+  }
+
+  .get-started-cta {
+    input#get-started-btn {
+      top: 70%;
+      left: 15%;
+      line-height: 1.25rem;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
+  }
+
+  // Search CTA
+  .new-trip {
+    top: 35%;
+  }
+
+  .new-trip-cta {
+    padding: 0.25rem;
+    grid-template-columns: auto;
+    grid-template-rows: auto auto auto;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+
+    .cta-element {
+      border-bottom: 1px solid $box-shadow-black;
+      margin: 0.25rem;
+
+      label {
+        font-size: 0.75rem;
+
+        &[for='search-btn'] {
+          padding: 0.25rem 0.5rem;
+        }
+      }
+      input {
+        line-height: 0.75rem;
+        font-size: 0.5rem;
+        margin-left: 0.25rem;
+        width: 5rem;
+      }
+      &.search {
+        justify-content: flex-end;
+        border-bottom: none;
+      }
+      &.search:hover {
+        border-radius: 10px;
+      }
+    }
+  }
+
+  // Saved Trip
+  .saved-trips.container {
+    height: 23rem;
+  }
+
+  .no-data.bookmarks {
+    .quote-icon {
+      margin: 0;
+    }
+
+    .bm-data {
+      &.travel-quote {
+        .quote {
+          margin: 0;
+          font-size: 1.5rem;
+        }
+        .quote-author {
+          margin: 0;
+          margin-top: 0.75rem;
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .with-data.container {
+    h1.header.bookmarks {
+      font-size: 1rem;
+      margin: 0;
+
+      i {
+        margin-right: 0.75rem;
+      }
+    }
+  }
+
+  .with-data.bookmarks {
+    padding: 0.25rem;
+    .bookmark {
+      margin: 0.5rem;
+      width: 6rem;
+      height: 8rem;
+
+      .bm-remove {
+        padding: 0 0.2rem;
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  //Trip Modal
+  .modal {
+    .close-modal {
+      top: 1.75%;
+      right: 4.5%;
+      padding: 0 0.25rem;
+      font-size: 0.75rem;
+    }
+
+    .modal-item-icon {
+      margin-top: 0.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .add-item, .new-item.flight {
+      font-size: 0.75rem;
+      line-height: 1rem;
+      padding: 0.1rem;
+      margin: 0.35rem;
+    }
+  }
+
+  .modal-container {
+    width: 90%;
+    height: 95%;
+    grid-template-rows: 50% 50%;
+    grid-template-columns: auto;
+
+    .modal-img {
+      flex-direction: row;
+
+      .loc-data {
+        font-size: 0.85rem;
+      }
+
+      input#save-trip-btn {
+        line-height: 1.25rem;
+        font-size: 0.75rem;
+        padding: 0 0.25rem;
+      }
+    }
+
+    .modal-data {
+      // heigsht: 100%;
+      margin: 0.35rem;
+      grid-template-columns: 49% 49%;
+      grid-gap: 2%;
+    }
+
+    .modal-item.weather {
+      padding: 0.5rem;
+
+      h1 {
+        font-size: 1.25rem;
+        margin: 0;
+      }
+
+      p {
+        font-size: 0.5rem;
+      }
+
+      .weather-data.main-data {
+        margin-left: 0.5rem;
+      }
+      .weather-data.other-data {
+        margin-left: 0.75rem;
+      }
+
+      i {
+        &.wind, &.tint {
+          padding-top: 0.25rem;
+          padding-right: 0.25rem;
+        }
+      }
+    }
+
+    .modal-item.packing {
+      padding: 0.5rem;
+
+      h1 {
+        margin: 0.25rem 0;
+      }
+
+      div.new-item.packing {
+        margin: 0.5rem;
+        grid-row: 0.75rem;
+
+        input[type='text'] {
+          line-height: 1rem;
+          font-size: 0.75rem;
+          padding: 0 0.25rem;
+        }
+
+        i {
+          font-size: 0.75rem;
+          padding: 0.1rem;
+        }
+      }
+
+      .with-data.packing {
+        margin-bottom: 1.25rem;
+        max-height: 7rem;
+      }
+
+      .packing-item {
+        grid-row: 1rem;
+
+        i.tick {
+          padding: 0.1rem;
+        }
+      }
+    }
+
+    // Flight Tickets
+    .modal-item.flight {
+      h1 {
+        margin: 0.5rem 0;
+      }
+
+      .modal-item-cta-input.flight {
+        label {
+          font-size: 0.5rem;
+        }
+        input {
+          border-radius: 25px;
+          padding: 0.1rem 0.25rem;
+          font-size: 0.5rem;
+        }
+      }
+
+      .with-data.flight {
+        margin-bottom: 1.5rem;
+        max-height: 7rem;
+
+        .ticket {
+          padding: 0.25rem;
+          grid-auto-rows: 5rem;
+        }
+      }
+    }
+
+    // Country Info
+    .modal-item.country-info {
+      padding: 0.5rem;
+
+      h6 {
+        font-size: 0.5rem;
+      }
+    }
+
+    .with-data.country-info {
+      grid-template-rows: 69% 29%;
+
+      .country-info-data.flag {
+        div.modal-item-icon.country-info {
+          margin-left: 0.25rem;
+          padding: 0;
+          width: 2.5rem;
+          height: 2.5rem;
+        }
+      }
+
+      .country-info-data.currency {
+        .curr-symbol {
+          margin-right: 0.25rem;
+          padding: 0.1rem 0.25rem;
+          font-size: 1rem;
+        }
+      }
+
+      .country-info-data.other {
+        .lang-icon {
+          margin-left: 0.35rem;
+          padding: 0.25rem;
+          font-size: 1rem;
+        }
+      }
+    }
+  }
+
+  // About Us
+  .about-us.section {
+    height: 23rem;
+  }
+
+  .about-us.container {
+    margin: 2rem 1rem 0.5rem;
+
+    .about-us.img-carousel {
+      margin: 0;
+
+      .img-container {
+        width: 8rem;
+        height: calc(100% - 3rem);
+        border: 1rem solid $secondary-color;
+      }
+    }
+
+    .about-us.section-content {
+      grid-template-rows: 20% 80%;
+      margin: 0 0 0 0.25rem;
+
+
+      h1 {
+        margin: 0.5rem;
+        font-size: 1rem;
+        align-items: flex-end;
+      }
+
+      .section-text {
+        margin: 0.5rem;
+
+        p {
+          margin: 0.5rem 0;
+        }
+      }
+    }
+  }
+
+  // Footer
+  .footer#footer {
+    .copyright.footer {
+      margin: 0.5rem;
+    }
+  }
+}
+
+/* -------------------------------------------------------------------------- */
+/* -------------------------- Medium Media Queries -------------------------- */
+/* -------------------------------------------------------------------------- */
+@media (min-width: 768px) and (max-width: 1130px) {
+  .webpage {
+    height: 45rem;
+  }
+
+  .navigation-filler {
+    height: 9rem;
+  }
+
+  // Navbar
+  .navigation {
+    grid-template-columns: 1fr 0 1fr;
+  }
+
+  .new-trip {
+    top: 35%;
+  }
+
+  .modal {
+    .close-modal {
+      top: 2%;
+      right: 4%;
+    }
+    .add-item, .new-item.flight {
+      font-size: 2rem;
+      line-height: 2.5rem;
+    }
+  }
+
+  .modal-container {
+    width: 90%;
+    height: 95%;
+    grid-template-columns: auto;
+    grid-template-rows: 50% 50%;
+
+    .modal-img {
+      .loc-data {
+        font-size: 1.5rem;
+      }
+    }
+
+    .modal-data {
+      grid-template-columns: 49% 49%;
+      grid-gap: 2%;
+    }
+
+    .modal-item.weather {
+      padding: 1rem 2rem;
+    }
+
+    .modal-item.packing {
+      div.new-item.packing {
+        margin: 1rem 0 1rem 1rem;
+        grid-row: 2.5rem;
+
+        input[type='text'] {
+          line-height: 1.5rem;
+          font-size: 1rem;
+        }
+
+        i {
+          font-size: 2rem;
+          padding: 0.25rem;
+        }
+      }
+    }
+
+    .modal-item.country-info {
+      padding: 1rem 2rem;
+
+      h2 {
+        font-size: 3rem;
+      }
+
+      h6 {
+        font-size: 0.75rem;
+      }
+    }
+
+    .with-data.country-info {
+      .country-info-data.flag {
+        div.modal-item-icon.country-info {
+          width: 4rem;
+          height: 4rem;
+          border: 0.75rem solid $accent-color;
+        }
+        img#flag-img {
+          border-radius: 50%;
+          width: 200%;
+          height: 150%;
+        }
+      }
+      .country-info-data.currency {
+        .curr-symbol {
+          margin-right: 0.5rem;
+        }
+      }
+      .country-info-data.other {
+        .lang-icon {
+          margin-left: 0.85rem;
+        }
+      }
+    }
+
+    .modal-item.flight {
+      padding: 1rem 2rem;
+
+      .with-data.flight {
+        .ticket {
+          padding: 0.5rem 1rem;
+
+          .ticket-text {
+            margin: 1rem 1.25rem;
+          }
+        }
+      }
+    }
+  }
+}
