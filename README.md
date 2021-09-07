@@ -2,8 +2,9 @@
 
 A travel application that uses multiple types of data, from different APIs (data sources) namely, weather, location co-ordinates, destination images and Rest Countries
 
-## Application Preview
+## Application Preview for Saved Trips
 
+https://user-images.githubusercontent.com/29170466/132299435-5c4666d0-07d9-432d-af30-c1ee1656ffb9.mov
 
 
 ## Software, Firmware and Hardware
@@ -96,5 +97,5 @@ The application is designed and developed by **Nimisha Viraj** as a part of [Uda
 ## Limitation and Scope
 
 * Service worker implementation impacts the overall speed of the Application. It is also seen crashing application due to their ongoing bug [1790](https://github.com/GoogleChrome/workbox/issues/1790)
-* Fetching Api data is taking approx 12-15 secs to display Result/Error.
+* Fetching Api data is taking approx 12-15 secs to display Result/Error, Loading is displayed.
 * Application can be expanded to provide more destination specific information like Point of Interests and offer more managing options like storing info of hotels or via trips.
