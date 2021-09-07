@@ -479,6 +479,11 @@
       flex-direction: column;
       align-items: flex-start;
       justify-content: center;
+
+      h1 {
+        font-size: 1.1rem;
+        margin: 0.25rem 0;
+      }
     }
 
     .country-info-data.flag {

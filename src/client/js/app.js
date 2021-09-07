@@ -313,6 +313,13 @@ const addTripModalEventListeners = () => {
     HelperFns.destructElementChildren(TripView.countryinfo.viewContainer);
     HelperFns.destructElementChildren(TripView.flight.withDataContainer);
     HelperFns.destructElementChildren(TripView.packing.withDataContainer);
+
+    TripView.flight.addCTAView.viewContainer.classList.add('hide-element');
+    TripView.flight.addCTAView.newEntryCTABtn.classList.add('hide-element');
+    TripView.flight.addCTABtn.classList.remove('hide-element');
+    TripView.packing.addCTABtn.classList.remove('hide-element');
+    TripView.packing.addCTAView.viewContainer.classList.add('hide-element');
+
     TripView.viewContainer.classList.add('hide-element');
 
     if(tripInDisplay.hasOwnProperty('tripId')) {

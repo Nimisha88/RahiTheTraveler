@@ -12,7 +12,7 @@
 export default (data = {}, dataTimeZone = 'America/New_York') => {
 
   try {
-    let dataDate = new Date(data.date);
+    let dataDate = new Date(data.date).toUTCString().slice(0,16);
     let sunriseTime = (new Date(data.sunrise * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
     let sunrsetTime = (new Date(data.sunset * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
 
@@ -20,7 +20,7 @@ export default (data = {}, dataTimeZone = 'America/New_York') => {
     let weatherData = document.createElement('div');
     weatherData.classList.add('with-data', 'weather');
 
-    weatherData.appendChild(generateMainData(dataDate.toDateString(), data.maxTemp, data.minTemp, data.feelsLikeTemp));
+    weatherData.appendChild(generateMainData(dataDate, data.maxTemp, data.minTemp, data.feelsLikeTemp));
     weatherData.appendChild(generateWeatherIcon(data.weather));
     weatherData.appendChild(generateOtherData(data.humidity, data.wind));
     weatherData.appendChild(generateSunData(sunriseTime, sunrsetTime));
@@ -53,6 +53,9 @@ const createErrorDisplay = () => {
   </div> */
 
 const generateMainData = (date, maxTemp, minTemp, feelsLikeTemp) => {
+
+  let dateParts = date.split(' ');
+
   let mainData = document.createElement('div');
   mainData.classList.add('weather-data', 'main-data');
   let dayEle = document.createElement('h5');
@@ -66,8 +69,8 @@ const generateMainData = (date, maxTemp, minTemp, feelsLikeTemp) => {
   let feelsLikeTempEle = document.createElement('h5');
   feelsLikeTempEle.classList.add('feels-like', 'text-alt');
 
-  dayEle.innerHTML = `${date.slice(0, 3)},`;
-  dateEle.innerHTML = date.slice(4);
+  dayEle.innerHTML = `${dateParts[0]}`;
+  dateEle.innerHTML = `${dateParts[2]} ${dateParts[1]} ${dateParts[3]}`;
   maxTempEle.innerHTML = `${Math.round(maxTemp)}°`;
   minTempEle.innerHTML = `Min: ${Math.round(minTemp)}°`;
   feelsLikeTempEle.innerHTML = `Feels: ${Math.round(feelsLikeTemp)}°`;
