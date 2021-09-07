@@ -22,6 +22,7 @@ https://user-images.githubusercontent.com/29170466/132299435-5c4666d0-07d9-432d-
 ## Installation instructions
 
 * Install [NodeJS](https://nodejs.org/)
+* Install [Sass](https://sass-lang.com/) using command `npm install -g sass`
 * Download the application locally
 * On terminal, `cd` to the main application folder containing `package.json` and install dependencies by running `npm install`
 
