@@ -50,7 +50,7 @@
 }
 
 .nav-links {
-  margin-right: 1rem; 
+  margin-right: 1rem;
   ul {
     width: 100%;
     display: grid;
@@ -155,6 +155,14 @@
 /* -------------------------------------------------------------------------- */
 /* ----------------------------- New Trip CTA ------------------------------- */
 /* -------------------------------------------------------------------------- */
+
+.new-trip-loading {
+  position: absolute;
+  top: 40%;
+  left: 3%;
+  text-align: left;
+  color: $accent-color;
+}
 
 .new-trip {
   position: absolute;

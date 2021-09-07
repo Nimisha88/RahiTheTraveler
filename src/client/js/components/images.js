@@ -1,3 +1,14 @@
+// -----------------------------------------------------------------------------
+// Load Static Assets
+// -----------------------------------------------------------------------------
+// loadNavStaticAssets() - Load assets for Nav Bar
+// loadSearchStaticAssets() - Load assets for Hero Section
+// loadModalFallbackAsset() - Load Fallback Image in case of Error
+// loadSavedTripStaticAsset() - Load assets for Bookmarks Section
+// loadBookmarkFallbackAsset() - Load Fallback Image in case of Error
+// loadAboutUsStaticAsset() - Load assets for About Us Section
+// -----------------------------------------------------------------------------
+
 import appIcon from '../../assets/app-icon.png';
 import appLogo from '../../assets/app-logo.png';
 import appHero from '../../assets/app-hero.png';

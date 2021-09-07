@@ -1,3 +1,14 @@
+// ----------------------------------------------------------------------------
+// Create Weather Info container for a Saved Trip/Search Result
+// ----------------------------------------------------------------------------
+// createErrorDisplay() - Create Error Container
+// generateMainData(date, maxTemp, minTemp, feelsLikeTemp) - Main Weather Data
+// generateWeatherIcon - Generate Icon Container with correct Weather Icon
+// fetchWeatherIcon - fetch correct Weather Icon
+// generateOtherData(humidity, wind) - Generate Other Weather Data Container
+// generateSunData(sunriseTime, sunsetTime) - Sunrise/Sunset Data Containe
+// ----------------------------------------------------------------------------
+
 export default (data = {}, dataTimeZone = 'America/New_York') => {
 
   try {
@@ -22,7 +33,7 @@ export default (data = {}, dataTimeZone = 'America/New_York') => {
   }
 }
 
-function createErrorDisplay() {
+const createErrorDisplay = () => {
   let errorContainer = document.createElement('div');
   errorContainer.classList.add('with-error');
   let errorText = document.createElement('h3');
@@ -41,7 +52,7 @@ function createErrorDisplay() {
     <h5 class="feels-like text-alt">Feels Like: 20°</h5>
   </div> */
 
-function generateMainData(date, maxTemp, minTemp, feelsLikeTemp) {
+const generateMainData = (date, maxTemp, minTemp, feelsLikeTemp) => {
   let mainData = document.createElement('div');
   mainData.classList.add('weather-data', 'main-data');
   let dayEle = document.createElement('h5');
@@ -76,7 +87,7 @@ function generateMainData(date, maxTemp, minTemp, feelsLikeTemp) {
     <i class="fas fa-cloud-rain fa-3x weather-icon"></i>
   </div> */
 
-function generateWeatherIcon(weather) {
+const generateWeatherIcon = (weather) => {
   let weatherIconData = document.createElement('div');
   weatherIconData.classList.add('weather-data');
   // weatherIconData.innerHTML = fetchWeatherIcon(weather.code);
@@ -84,7 +95,7 @@ function generateWeatherIcon(weather) {
   return weatherIconData;
 }
 
-function fetchWeatherIcon(code) {
+const fetchWeatherIcon = (code) => {
   let weatherIcon = document.createElement('i');
   weatherIcon.classList.add('fas', 'fa-3x', 'modal-item-icon', 'weather');
 
@@ -169,7 +180,7 @@ function fetchWeatherIcon(code) {
   <p><i class="fas fa-wind wind"></i><span class="wind-speed text-alt">3 mph</span></p>
 </div> */
 
-function generateOtherData(humidity, wind) {
+const generateOtherData = (humidity, wind) => {
   let weatherOtherData = document.createElement('div');
   weatherOtherData.classList.add('weather-data', 'other-data');
 
@@ -217,7 +228,7 @@ function generateOtherData(humidity, wind) {
     </div>
   </div> */
 
-function generateSunData(sunriseTime, sunsetTime) {
+const generateSunData = (sunriseTime, sunsetTime) => {
   let eleTextContent;
 
   let sunData = document.createElement('div');

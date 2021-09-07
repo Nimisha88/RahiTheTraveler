@@ -1,3 +1,9 @@
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Create Country Info container for a Saved Trip/Search Result
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
 /* Example of Country Info
 <div class="with-data country-info">
   <div class="country-info-data main">
@@ -86,7 +92,7 @@ export default (data = {}) => {
   }
 }
 
-function createErrorDisplay() {
+const createErrorDisplay = () => {
   let errorContainer = document.createElement('div');
   errorContainer.classList.add('with-error');
   let errorText = document.createElement('h3');

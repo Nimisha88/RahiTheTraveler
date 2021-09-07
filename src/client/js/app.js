@@ -5,6 +5,7 @@
 // ----------------------------------------------------------------------------
 
 // import '../styles/style.scss';
+// import * as eventListeners from './components/event-listeners.js';
 import * as HelperFns from './components/helper-fns.js';
 import { postAsync, getAsync } from './components/apis.js';
 import createWeatherDisplay from './components/weather.js';
@@ -12,7 +13,6 @@ import createPackingItemDisplay from './components/packing-item.js';
 import createFlightTicketDisplay from './components/flight-ticket.js';
 import createCountryInfoDisplay from './components/country-info.js';
 import createBookmarkDisplay from './components/bookmark.js';
-// import * as eventListeners from './components/event-listeners.js';
 import {
   GetStartedView,
   SearchView,
@@ -50,11 +50,16 @@ let tripInDisplay = {};
 // -----------------------------------------------------------------------------
 // Functions
 // -----------------------------------------------------------------------------
-// displayModal() - Display trip details in the modal
-// processSearchRequest() - Process User Request
+// loadSavedTrips() - Get Saved Trips from Local Storage
+// displayModal() - Display trip details in the modal from Search/Bookmarks
+// processSearchRequest() - Process User Search Trip Request
+// addHeroEventListeners() - Add listners to Hero elements
+// addTripModalEventListeners() - Add listners to Modal elements
+// createBookmark(tripId) - Create a bookmark for the saved trip
+// -----------------------------------------------------------------------------
 // -----------------------------------------------------------------------------
 
-function loadSavedTrips() {
+const loadSavedTrips = () => {
   console.log(savedTrips);
   let tripIds = Object.keys(savedTrips);
   console.log("Inside saved trips: " + tripIds);
@@ -68,7 +73,7 @@ function loadSavedTrips() {
   }
 }
 
-function displayModal() {
+const displayModal = () => {
   TripView.viewContainer.classList.remove('hide-element');
 
   if(tripInDisplay.hasOwnProperty('tripId')) {
@@ -128,7 +133,7 @@ function displayModal() {
   }
 }
 
-async function processSearchRequest() {
+const processSearchRequest = async () => {
   let latestSearchEntry = new UserEntry(SearchView.whereTo.value, SearchView.startDate.value);
   // console.log(JSON.stringify(latestSearchEntry));
 
@@ -142,6 +147,8 @@ async function processSearchRequest() {
     tripInDisplay = await getAsync('/api/getLookupResults');
     // console.log('In Process Request: \n' + JSON.stringify(tripToDisplay));
 
+    SearchView.viewContainer.classList.remove('hide-element');
+    SearchView.loadingContainer.classList.add('hide-element');
     if(tripInDisplay.geoname.status == 200) {
       displayModal();
     } else {
@@ -174,6 +181,8 @@ const addHeroEventListeners = () => {
       alert("Please input both Destination and Trip Start Date to continue.");
       return;
     }
+    SearchView.viewContainer.classList.add('hide-element');
+    SearchView.loadingContainer.classList.remove('hide-element');
     processSearchRequest();
   });
 }

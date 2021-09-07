@@ -1,28 +1,29 @@
 // -----------------------------------------------------------------------------
+// Navbar Event Listeners
 // -----------------------------------------------------------------------------
-// Navbar Events
-// -----------------------------------------------------------------------------
+// navbarEventsOnClick() - To handle Click Events
+// navbarEventsOnScroll() - To handle Scrol Events
+// navbarBackgroundChangeOnScroll() - To handle background color change
 // -----------------------------------------------------------------------------
 
-export function navbarEventsOnClick() {
+export const navbarEventsOnClick = () => {
   const navbarContainer = document.getElementById('navigation');
   const navLinks = document.querySelectorAll('.nav-link');
   let activeNavLink = document.querySelector('.nav-link.active');
 
   Array.from(navLinks).map((navLink) => {
     navLink.addEventListener("click", (event) => {
-    activeNavLink.classList.remove("active");
-    activeNavLink = event.currentTarget;
-    activeNavLink.classList.add("active");
-    if(!location.href.includes('#home')) {
-      navbarContainer.classList.add('nav-background');
-    }
-    // location.href = location.href.split('/#');
+      activeNavLink.classList.remove("active");
+      activeNavLink = event.currentTarget;
+      activeNavLink.classList.add("active");
+      if(!location.href.includes('#home')) {
+        navbarContainer.classList.add('nav-background');
+      }
     })
   });
 }
 
-export function navbarEventsOnScroll() {
+export const navbarEventsOnScroll = () => {
   let activeNavLink = document.querySelector('.nav-link.active');
   const targets = document.querySelectorAll('.section');
 
@@ -30,7 +31,7 @@ export function navbarEventsOnScroll() {
     threshold: [0.5]
   }
 
-  function handleIntersection(entries) {
+  const handleIntersection = (entries) => {
     entries.map((entry) => {
       if (entry.isIntersecting) {
         // console.log(entry.target.id + "is now visible");
@@ -48,7 +49,7 @@ export function navbarEventsOnScroll() {
   });
 }
 
-export function navbarBackgroundChangeOnScroll() {
+export const navbarBackgroundChangeOnScroll = () => {
   const navbarContainer = document.getElementById('navigation');
   // const target = document.getElementById('hero');
   const target = document.querySelector('.navigation-filler');
@@ -57,7 +58,7 @@ export function navbarBackgroundChangeOnScroll() {
     threshold: [0.1]
   }
 
-  function handleIntersection(entries) {
+  const handleIntersection = (entries) => {
     entries.map((entry) => {
       document.getElementById('navigation').classList.toggle('nav-background');
     });

@@ -1,10 +1,13 @@
 // ----------------------------------------------------------------------------
 // Client Side Data Objects
 // ----------------------------------------------------------------------------
-// UserEntry - User Input for Search CTA
-// FlightTicket - User Input for a Flight Ticket
-// PackingItem - User Input for a Packing Item
-// ObjName.prototype.varName =  or ObjName.prototype.fnName = function() {}
+// GetStartedView - Object to store frequently used DOM elements of GetStarted
+// SearchView - Object to store frequently used DOM elements of Search Display
+// TripView - Object to store frequently used DOM elements of Trip Modal
+// SavedTripsView - Object to store frequently used DOM elements of Bookmarks
+// UserEntry - Object to store User Input for Search CTA
+// FlightTicket - Object to store User Input for a Flight Ticket
+// PackingItem - Object to store User Input for a Packing Item
 // ----------------------------------------------------------------------------
 
 const GetStartedView = {
@@ -17,6 +20,7 @@ const SearchView = {
   whereTo: document.getElementById('where-to'),
   startDate: document.getElementById('trip-start-date'),
   ctaBtn: document.getElementById('search-btn'),
+  loadingContainer: document.querySelector('.new-trip-loading'),
 }
 
 const TripView = {

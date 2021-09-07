@@ -9,6 +9,12 @@ import * as AppEventListeners from './js/components/event-listeners.js';
 import * as AppAssetLoaders from './js/components/images.js';
 import { addHeroEventListeners, addTripModalEventListeners, loadSavedTrips } from './js/app.js';
 
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Function Calls on Load
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
 // Navbar Event Listeners
 AppEventListeners.navbarEventsOnScroll();
 AppEventListeners.navbarEventsOnClick();
@@ -31,7 +37,6 @@ AppAssetLoaders.loadAboutUsStaticAsset();
 // Register Service Worker
 // ----------------------------------------------------------------------------
 
-// const devMode = process.argv[process.argv.indexOf('--mode') + 1] !== 'production';
 // if ('serviceWorker' in navigator) {
 //   window.addEventListener("load", () => {
 //     if (!navigator.serviceWorker.getRegistrations().length) {

@@ -4,13 +4,14 @@
 // GeonamesAPI - JS Object with GeonamesAPI base URL and other constants
 // WeatherbitAPI - JS Object with WeatherbitAPI base URL and other constants
 // PixabayAPI - JS Object with PixabayAPI base URL and other constants
+// RestCountriesAPI - JS Object with RestCountriesAPI URL and other constants
 // Geonames(apiDataObj) - Data Object to store app specific GeonameAPI Data
 // Weather(apiDataObj) - Data Object to store app specific WeatherAPI Data
 // DayWiseWeatherData(apiDataObj) - Supporting Data Object for Weather Forecast
 // DestinationGraphics(apiDataObj) - Data Obj to store app spec PixabayAPI Data
 // UserEntry(apiDataObj) - Data Object to store all app spec data for an entry
-// ----------------------------------------------------------------------------
-// Object.prototype.varName =  or Object.prototype.fnName = function() {}
+// CountryInfo(apiDataObj) - Data Object to store all app spec Country data
+// RequestProcessingError() - Data Object to store Error Information
 // ----------------------------------------------------------------------------
 
 // JS Object with GeonamesAPI base URL and other constants
@@ -64,7 +65,7 @@ const RestCountriesAPI = {
 }
 
 // Data Object to store app specific GeonameAPI Data
-function Geoname(apiDataObj) {
+const Geoname = (apiDataObj) => {
   this.status = 200;
   this.type = 'geoname';
   this.city = apiDataObj.toponymName;
@@ -76,7 +77,7 @@ function Geoname(apiDataObj) {
 }
 
 // Data Object to store app specific WeatherAPI Data
-function Weather(apiDataObj) {
+const Weather = (apiDataObj) => {
   this.status = 200;
   this.type = 'weather';
   this.city = apiDataObj.city_name;
@@ -88,7 +89,7 @@ function Weather(apiDataObj) {
   this.data = [];
 }
 // Supporting Data Object for Weather Forecast excluded: ${apiDataObj.wind_dir}°
-function DayWiseWeatherData(apiDataObj) {
+const DayWiseWeatherData = (apiDataObj) => {
   this.date = apiDataObj.valid_date;
   this.weather = apiDataObj.weather;
   this.maxTemp = apiDataObj.max_temp;
@@ -101,7 +102,7 @@ function DayWiseWeatherData(apiDataObj) {
 }
 
 // Data Obj to store app spec PixabayAPI Data
-function DestinationGraphics(apiDataObj) {
+const DestinationGraphics = (apiDataObj) => {
   this.status = 200;
   this.type = 'graphics';
   this.imgID = apiDataObj.id;
@@ -114,8 +115,7 @@ function DestinationGraphics(apiDataObj) {
 }
 
 // Data Obj to store app spec RestCountriesAPI Data
-
-function CountryInfo(apiDataObj) {
+const CountryInfo = (apiDataObj) => {
   this.status = 200;
   this.type = 'countryinfo';
   this.name = apiDataObj.name;
@@ -129,7 +129,7 @@ function CountryInfo(apiDataObj) {
 }
 
 // Main Data Object to store all app spec data for an entry
-function UserEntry(apiDataObj) {
+const UserEntry = (apiDataObj) => {
   this.destination = apiDataObj.destination;
   this.startDate = apiDataObj.startDate;
   this.flights = [];
@@ -137,7 +137,7 @@ function UserEntry(apiDataObj) {
 }
 
 // Error Object
-function RequestProcessingError(type='unknown', error={code: 0, msg: 'parsing response error'}) {
+const RequestProcessingError = (type='unknown', error={code: 0, msg: 'parsing response error'}) => {
   this.status = '666';
   this.type = type;
   this.error = error;

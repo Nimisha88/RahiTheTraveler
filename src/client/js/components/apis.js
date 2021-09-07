@@ -5,7 +5,7 @@
 // getAsync(apiURL = '/api/') - HTTP Get request
 // ----------------------------------------------------------------------------
 
-async function postAsync(apiURL='/api/', data={}) {
+const postAsync = async (apiURL='/api/', data={}) => {
   if(apiURL == '/api/testPost') {
     return({ msg: 'Post Test Successful' });
   }
@@ -29,7 +29,7 @@ async function postAsync(apiURL='/api/', data={}) {
   }
 }
 
-async function getAsync(apiURL='/api/') {
+ const getAsync = async (apiURL='/api/') => {
   if(apiURL == '/api/testGet') {
     return({ msg: 'Get Test Successful' });
   }

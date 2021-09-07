@@ -1,3 +1,9 @@
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+// Create Flight Ticket for a Saved Trip/Search Result
+// ----------------------------------------------------------------------------
+// ----------------------------------------------------------------------------
+
 /* Example of Flight Ticket
 <div class="ticket">
   <div class="ticket-from ticket-div-left">
@@ -45,7 +51,7 @@ export default (data = {}) => {
   }
 }
 
-function generateTicketText(toOrFrom, time, date, place) {
+const generateTicketText = (toOrFrom, time, date, place) => {
   let ticketText = document.createElement('div'); ticketText.classList.add('ticket-text');
   let iconPara = document.createElement('p');
   let iconEle = document.createElement('i'); iconEle.classList.add('fas', `fa-plane-${toOrFrom}`);
