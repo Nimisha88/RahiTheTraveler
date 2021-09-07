@@ -4,8 +4,4 @@ FendCapstone
 # node-modules
 node_modules
 
-# Environment Files
-src/server/.env
-.env
-
 #The End
