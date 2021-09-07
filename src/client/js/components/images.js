@@ -82,7 +82,7 @@ const loadAboutUsStaticAsset = () => {
   let looper = 0;
   setInterval(() => {
     carouselImgEle.src = carouselImages[looper++ % carouselImages.length];
-  }, 3000);
+  }, 2000);
 }
 
 const loadBookmarkFallbackAsset = (tripId) => {

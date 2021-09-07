@@ -65,7 +65,7 @@ const RestCountriesAPI = {
 }
 
 // Data Object to store app specific GeonameAPI Data
-const Geoname = (apiDataObj) => {
+function Geoname(apiDataObj) {
   this.status = 200;
   this.type = 'geoname';
   this.city = apiDataObj.toponymName;
@@ -77,7 +77,7 @@ const Geoname = (apiDataObj) => {
 }
 
 // Data Object to store app specific WeatherAPI Data
-const Weather = (apiDataObj) => {
+function Weather(apiDataObj) {
   this.status = 200;
   this.type = 'weather';
   this.city = apiDataObj.city_name;
@@ -89,7 +89,7 @@ const Weather = (apiDataObj) => {
   this.data = [];
 }
 // Supporting Data Object for Weather Forecast excluded: ${apiDataObj.wind_dir}°
-const DayWiseWeatherData = (apiDataObj) => {
+function DayWiseWeatherData(apiDataObj) {
   this.date = apiDataObj.valid_date;
   this.weather = apiDataObj.weather;
   this.maxTemp = apiDataObj.max_temp;
@@ -102,7 +102,7 @@ const DayWiseWeatherData = (apiDataObj) => {
 }
 
 // Data Obj to store app spec PixabayAPI Data
-const DestinationGraphics = (apiDataObj) => {
+function DestinationGraphics(apiDataObj) {
   this.status = 200;
   this.type = 'graphics';
   this.imgID = apiDataObj.id;
@@ -115,7 +115,7 @@ const DestinationGraphics = (apiDataObj) => {
 }
 
 // Data Obj to store app spec RestCountriesAPI Data
-const CountryInfo = (apiDataObj) => {
+function CountryInfo(apiDataObj) {
   this.status = 200;
   this.type = 'countryinfo';
   this.name = apiDataObj.name;
@@ -129,7 +129,7 @@ const CountryInfo = (apiDataObj) => {
 }
 
 // Main Data Object to store all app spec data for an entry
-const UserEntry = (apiDataObj) => {
+function UserEntry(apiDataObj) {
   this.destination = apiDataObj.destination;
   this.startDate = apiDataObj.startDate;
   this.flights = [];
@@ -137,7 +137,7 @@ const UserEntry = (apiDataObj) => {
 }
 
 // Error Object
-const RequestProcessingError = (type='unknown', error={code: 0, msg: 'parsing response error'}) => {
+function RequestProcessingError(type='unknown', error={code: 0, msg: 'parsing response error'}) {
   this.status = '666';
   this.type = type;
   this.error = error;

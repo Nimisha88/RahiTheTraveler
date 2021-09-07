@@ -4,8 +4,6 @@
 // ----------------------------------------------------------------------------
 // ----------------------------------------------------------------------------
 
-// import '../styles/style.scss';
-// import * as eventListeners from './components/event-listeners.js';
 import * as HelperFns from './components/helper-fns.js';
 import { postAsync, getAsync } from './components/apis.js';
 import createWeatherDisplay from './components/weather.js';
@@ -60,9 +58,7 @@ let tripInDisplay = {};
 // -----------------------------------------------------------------------------
 
 const loadSavedTrips = () => {
-  console.log(savedTrips);
   let tripIds = Object.keys(savedTrips);
-  console.log("Inside saved trips: " + tripIds);
   if (!tripIds.length) {
     return;
   }
@@ -135,7 +131,6 @@ const displayModal = () => {
 
 const processSearchRequest = async () => {
   let latestSearchEntry = new UserEntry(SearchView.whereTo.value, SearchView.startDate.value);
-  // console.log(JSON.stringify(latestSearchEntry));
 
   if (!window.navigator.onLine) {
     alert("You seem to be offline, try again later");
@@ -145,7 +140,6 @@ const processSearchRequest = async () => {
   try {
     await postAsync('/api/lookupDestination', latestSearchEntry);
     tripInDisplay = await getAsync('/api/getLookupResults');
-    // console.log('In Process Request: \n' + JSON.stringify(tripToDisplay));
 
     SearchView.viewContainer.classList.remove('hide-element');
     SearchView.loadingContainer.classList.add('hide-element');
@@ -158,6 +152,8 @@ const processSearchRequest = async () => {
   } catch (error) {
     console.log('******************** Processing Search Request Failed ******************** \n', error);
     alert('Server not responding. Please try again later.');
+    SearchView.viewContainer.classList.remove('hide-element');
+    SearchView.loadingContainer.classList.add('hide-element');
   }
 }
 
@@ -341,11 +337,9 @@ const addTripModalEventListeners = () => {
     }
 
     let tripId = `BookmarkNum${Object.keys(savedTrips).length + 1}`;
-    console.log(tripId);
     tripInDisplay.tripId = tripId;
     savedTrips[tripId] = tripInDisplay;
     createBookmark(tripId);
-    // console.log(savedTrips);
     HelperFns.setLocalStorage('SavedTrips', savedTrips);
     TripView.closeCTABtn.click();
   });

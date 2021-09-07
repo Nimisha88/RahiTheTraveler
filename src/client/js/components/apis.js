@@ -21,7 +21,7 @@ const postAsync = async (apiURL='/api/', data={}) => {
 
   try {
     const json = await response.json();
-    console.log('In Post: \n' + JSON.stringify(json));
+    console.log('POST Successful \n');
     return json;
   }
   catch(error) {
@@ -38,7 +38,7 @@ const postAsync = async (apiURL='/api/', data={}) => {
 
   try {
     const json = await response.json();
-    console.log('In GET json: \n' + JSON.stringify(json));
+    console.log('GET Successful \n');
     return json
   }
   catch (error) {
