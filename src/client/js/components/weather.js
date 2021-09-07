@@ -1,19 +1,35 @@
 export default (data = {}, dataTimeZone = 'America/New_York') => {
 
-  let dataDate = new Date(data.date);
-  let sunriseTime = (new Date(data.sunrise * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
-  let sunrsetTime = (new Date(data.sunset * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
+  try {
+    let dataDate = new Date(data.date);
+    let sunriseTime = (new Date(data.sunrise * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
+    let sunrsetTime = (new Date(data.sunset * 1000)).toLocaleTimeString('en-US', {timeZone: dataTimeZone});
 
-  // <div class="with-data weather">
-  let weatherData = document.createElement('div');
-  weatherData.classList.add('with-data', 'weather');
+    // <div class="with-data weather">
+    let weatherData = document.createElement('div');
+    weatherData.classList.add('with-data', 'weather');
 
-  weatherData.appendChild(generateMainData(dataDate.toDateString(), data.maxTemp, data.minTemp, data.feelsLikeTemp));
-  weatherData.appendChild(generateWeatherIcon(data.weather));
-  weatherData.appendChild(generateOtherData(data.humidity, data.wind));
-  weatherData.appendChild(generateSunData(sunriseTime, sunrsetTime));
+    weatherData.appendChild(generateMainData(dataDate.toDateString(), data.maxTemp, data.minTemp, data.feelsLikeTemp));
+    weatherData.appendChild(generateWeatherIcon(data.weather));
+    weatherData.appendChild(generateOtherData(data.humidity, data.wind));
+    weatherData.appendChild(generateSunData(sunriseTime, sunrsetTime));
 
-  return weatherData;
+    return weatherData;
+  }
+  catch(error) {
+    console.log('******************** Weather Information is Unavailable or has Issues ******************** \n');
+    return createErrorDisplay();
+  }
+}
+
+function createErrorDisplay() {
+  let errorContainer = document.createElement('div');
+  errorContainer.classList.add('with-error');
+  let errorText = document.createElement('h3');
+  errorText.classList.add('text-alt');
+  errorText.textContent = 'Weather Information Unavailable ...';
+  errorContainer.appendChild(errorText);
+  return errorContainer;
 }
 
 /* Example Main Data

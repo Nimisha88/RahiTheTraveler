@@ -20,68 +20,78 @@
 
 export default (data = {}) => {
 
-  let countryData = document.createElement('div');
-  countryData.classList.add('with-data', 'country-info');
-
-  let mainData = document.createElement('div');
-  mainData.classList.add('country-info-data', 'main');
-  let nativeName = document.createElement('h6');
-  nativeName.classList.add('native-name', 'text-alt');
-  nativeName.textContent = data.nativeName;
-  let countryName = document.createElement('h1');
-  countryName.classList.add('country-name');
-  if (data.name.length <= 25) {
-    countryName.textContent = data.name;
-  } else {
-    countryName.textContent = data.altNames[0];
-    for (let altName of data.altNames) {
-      if (altName.includes(' ') || altName.length > 3) {
-        countryName.textContent = altName;
+  try {
+    let countryData = document.createElement('div');
+    countryData.classList.add('with-data', 'country-info');
+    let mainData = document.createElement('div');
+    mainData.classList.add('country-info-data', 'main');
+    let nativeName = document.createElement('h6');
+    nativeName.classList.add('native-name', 'text-alt');
+    nativeName.textContent = data.nativeName;
+    let countryName = document.createElement('h1');
+    countryName.classList.add('country-name');
+    if (data.name.length <= 25) {
+      countryName.textContent = data.name;
+    } else {
+      countryName.textContent = data.altNames[0];
+      for (let altName of data.altNames) {
+        if (altName.includes(' ') || altName.length > 3) {
+          countryName.textContent = altName;
+        }
       }
     }
+    let capitalName = document.createElement('h6');
+    capitalName.classList.add('capital-name', 'text-alt');
+    capitalName.textContent = data.capital;
+
+    let flagData = document.createElement('div');
+    flagData.classList.add('country-info-data', 'flag');
+    let modalIcon = document.createElement('div');
+    modalIcon.classList.add('modal-item-icon', 'country-info');
+    let flagImg = document.createElement('img');
+    flagImg.id = 'flag-img';
+    flagImg.src = data.flag;
+    flagImg.alt = 'Country Flag'
+
+    let currencyData = document.createElement('div');
+    currencyData.classList.add('country-info-data', 'currency');
+    let currencyCode = document.createElement('h6');
+    currencyCode.classList.add('currency-code', 'text-alt');
+    currencyCode.innerHTML = `<span class="curr-symbol">${data.currency.symbol}</span>  ${data.currency.code}`;
+
+    let otherData = document.createElement('div');
+    otherData.classList.add('country-info-data', 'other');
+    let firstLang = document.createElement('h6');
+    firstLang.classList.add('first-lang', 'text-alt');
+    firstLang.innerHTML = `${data.firstLang.nativeName}<i class="fas fa-pencil-alt lang-icon"></i>`;
+
+    mainData.appendChild(nativeName);
+    mainData.appendChild(countryName);
+    mainData.appendChild(capitalName);
+    modalIcon.appendChild(flagImg)
+    flagData.appendChild(modalIcon);
+    currencyData.appendChild(currencyCode);
+    otherData.appendChild(firstLang);
+
+    countryData.appendChild(mainData);
+    countryData.appendChild(flagData);
+    countryData.appendChild(currencyData);
+    countryData.appendChild(otherData);
+
+    return countryData;
   }
-  let capitalName = document.createElement('h6');
-  capitalName.classList.add('capital-name', 'text-alt');
-  capitalName.textContent = data.capital;
+  catch(error) {
+    console.log('******************** Country Information is Unavailable or has Issues ******************** \n');
+    return createErrorDisplay();
+  }
+}
 
-  let flagData = document.createElement('div');
-  flagData.classList.add('country-info-data', 'flag');
-  let modalIcon = document.createElement('div');
-  modalIcon.classList.add('modal-item-icon', 'country-info');
-  let flagImg = document.createElement('img');
-  flagImg.id = 'flag-img';
-  flagImg.src = data.flag;
-  flagImg.alt = 'Country Flag'
-
-  let currencyData = document.createElement('div');
-  currencyData.classList.add('country-info-data', 'currency');
-  let currencyCode = document.createElement('h6');
-  currencyCode.classList.add('currency-code', 'text-alt');
-  // let currencySymbol = document.createElement('span');
-  // currencySymbol.classList.add('curr-symbol');
-  // currencySymbol.value = data.currency.symbol;
-  currencyCode.innerHTML = `<span class="curr-symbol">${data.currency.symbol}</span>  ${data.currency.code}`;
-  // `<span class="curr-symbol">${data.currency.symbol}</span>  ${data.currency.code}`;
-
-  let otherData = document.createElement('div');
-  otherData.classList.add('country-info-data', 'other');
-  let firstLang = document.createElement('h6');
-  firstLang.classList.add('first-lang', 'text-alt');
-  // firstLang.value = data.language.nativeName;
-  firstLang.innerHTML = `${data.firstLang.nativeName}<i class="fas fa-pencil-alt lang-icon"></i>`;
-
-  mainData.appendChild(nativeName);
-  mainData.appendChild(countryName);
-  mainData.appendChild(capitalName);
-  modalIcon.appendChild(flagImg)
-  flagData.appendChild(modalIcon);
-  currencyData.appendChild(currencyCode);
-  otherData.appendChild(firstLang);
-
-  countryData.appendChild(mainData);
-  countryData.appendChild(flagData);
-  countryData.appendChild(currencyData);
-  countryData.appendChild(otherData);
-
-  return countryData;
+function createErrorDisplay() {
+  let errorContainer = document.createElement('div');
+  errorContainer.classList.add('with-error');
+  let errorText = document.createElement('h3');
+  errorText.classList.add('text-alt');
+  errorText.textContent = 'Country Information Unavailable ...';
+  errorContainer.appendChild(errorText);
+  return errorContainer;
 }

@@ -10,32 +10,38 @@
 
 
 export default (item = {}) => {
-  let listItem = document.createElement('div'); listItem.classList.add('packing-item');
 
-  let checkbox = document.createElement('input');
-  checkbox.type = 'checkbox';
-  checkbox.id = item.id;
-  checkbox.classList.add('hide-element');
+  try {
+    let listItem = document.createElement('div'); listItem.classList.add('packing-item');
 
-  let itemName = document.createElement('label');
-  itemName.htmlFor = checkbox.id;
-  itemName.textContent = item.name;
-  itemName.classList.add('item-name');
+    let checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.id = item.id;
+    checkbox.classList.add('hide-element');
 
-  let itemSelector = document.createElement('label');
-  itemSelector.htmlFor = checkbox.id;
-  itemSelector.classList.add('item-selector');
+    let itemName = document.createElement('label');
+    itemName.htmlFor = checkbox.id;
+    itemName.textContent = item.name;
+    itemName.classList.add('item-name');
 
-  let radioIcon = document.createElement('i');
-  radioIcon.classList.add('far', 'fa-circle', 'radio');
-  let tickIcon = document.createElement('i');
-  tickIcon.classList.add('fas', 'fa-check', 'tick');
+    let itemSelector = document.createElement('label');
+    itemSelector.htmlFor = checkbox.id;
+    itemSelector.classList.add('item-selector');
 
-  itemSelector.appendChild(radioIcon);
-  itemSelector.appendChild(tickIcon);
-  listItem.appendChild(checkbox);
-  listItem.appendChild(itemName);
-  listItem.appendChild(itemSelector);
+    let radioIcon = document.createElement('i');
+    radioIcon.classList.add('far', 'fa-circle', 'radio');
+    let tickIcon = document.createElement('i');
+    tickIcon.classList.add('fas', 'fa-check', 'tick');
 
-  return listItem;
+    itemSelector.appendChild(radioIcon);
+    itemSelector.appendChild(tickIcon);
+    listItem.appendChild(checkbox);
+    listItem.appendChild(itemName);
+    listItem.appendChild(itemSelector);
+
+    return listItem;
+  }
+  catch(error) {
+    console.log('******************** Create Packing Item Error ******************** \n', error);
+  }
 }

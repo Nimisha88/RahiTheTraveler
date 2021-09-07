@@ -12,37 +12,42 @@
 
 export default (data = {}) => {
 
-  let bookmark = document.createElement('div');
-  bookmark.classList.add('bookmark', data.tripId);
+  try {
+    let bookmark = document.createElement('div');
+    bookmark.classList.add('bookmark', data.tripId);
 
-  let deleteBookmark = document.createElement('div');
-  deleteBookmark.classList.add('bm-remove');
-  deleteBookmark.id = data.tripId;
-  let deleteBookmarkIcon = document.createElement('i');
-  deleteBookmarkIcon.classList.add('fas', 'fa-times');
+    let deleteBookmark = document.createElement('div');
+    deleteBookmark.classList.add('bm-remove');
+    deleteBookmark.id = data.tripId;
+    let deleteBookmarkIcon = document.createElement('i');
+    deleteBookmarkIcon.classList.add('fas', 'fa-times');
 
-  let imageBookmark = document.createElement('div');
-  imageBookmark.classList.add('bm-data', 'image');
-  let image = document.createElement('img');
-  image.classList.add('bm-image', data.tripId);
-  image.src = data.graphics.previewURL;
+    let imageBookmark = document.createElement('div');
+    imageBookmark.classList.add('bm-data', 'image');
+    let image = document.createElement('img');
+    image.classList.add('bm-image', data.tripId);
+    image.src = data.graphics.previewURL;
 
-  let locBookmark = document.createElement('div');
-  locBookmark.classList.add('bm-data', 'loc');
-  let destBookmark = document.createElement('h3');
-  destBookmark.classList.add('bm-dest');
-  destBookmark.textContent = data.destination;
-  let dateBookmark = document.createElement('h6');
-  dateBookmark.classList.add('bm-date');
-  dateBookmark.textContent = (new Date(data.startDate)).toUTCString().slice(0,16);
+    let locBookmark = document.createElement('div');
+    locBookmark.classList.add('bm-data', 'loc');
+    let destBookmark = document.createElement('h3');
+    destBookmark.classList.add('bm-dest');
+    destBookmark.textContent = data.destination;
+    let dateBookmark = document.createElement('h6');
+    dateBookmark.classList.add('bm-date');
+    dateBookmark.textContent = (new Date(data.startDate)).toUTCString().slice(0,16);
 
-  deleteBookmark.appendChild(deleteBookmarkIcon);
-  imageBookmark.appendChild(image);
-  locBookmark.appendChild(destBookmark);
-  locBookmark.appendChild(dateBookmark);
-  bookmark.appendChild(deleteBookmark);
-  bookmark.appendChild(imageBookmark);
-  bookmark.appendChild(locBookmark);
+    deleteBookmark.appendChild(deleteBookmarkIcon);
+    imageBookmark.appendChild(image);
+    locBookmark.appendChild(destBookmark);
+    locBookmark.appendChild(dateBookmark);
+    bookmark.appendChild(deleteBookmark);
+    bookmark.appendChild(imageBookmark);
+    bookmark.appendChild(locBookmark);
 
-  return bookmark;
+    return bookmark;
+  }
+  catch(error) {
+    console.log('******************** Create Bookmark Error ******************** \n', error);
+  }
 }

@@ -52,8 +52,8 @@ const TripView = {
     addCTABtn: document.querySelector('.add-item.packing'),
     addCTAView: {
       viewContainer: document.querySelector('.new-item.packing'),
-      itemName: document.querySelector('.new-item.packing').getElementsByTagName('input')[0],
-      newEntryCTABtn: document.querySelector('.new-item.packing').getElementsByTagName('i')[0],
+      itemName: document.querySelector('.new-item-name'),
+      newEntryCTABtn: document.querySelector('.new-item-icon'),
     }
   },
   countryinfo: {

@@ -16,7 +16,7 @@ export function createErrorDisplay(containerName='') {
   let errorContainer = document.createElement('div');
   errorContainer.classList.add('with-error');
   let errorText = document.createElement('h3');
-  errorText.classList.add('max-temp', 'text-alt');
+  errorText.classList.add('text-alt');
   errorText.textContent = containerName == '' ? 'Information Unavailable ...' : `${containerName} Information Unavailable ...`;
   errorContainer.appendChild(errorText);
   return errorContainer;

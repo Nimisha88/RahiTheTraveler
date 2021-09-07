@@ -21,29 +21,28 @@
 
 export default (data = {}) => {
 
-  let timeContent;
-  timeContent = (new Date(data.fromDate)).toUTCString().split(' ');
-  let fromDate = `${timeContent[2]} ${timeContent[1]}`;
-  timeContent = (new Date(data.toDate)).toUTCString().split(' ');
-  let toDate = `${timeContent[2]} ${timeContent[1]}`;
-
-  let ticket = document.createElement('div'); ticket.classList.add('ticket');
-  let ticketFrom = document.createElement('div'); ticketFrom.classList.add('ticket-from', 'ticket-div-left');
-  let ticketTo = document.createElement('div'); ticketTo.classList.add('ticket-to', 'ticket-div-right');
-
   try {
+    let ticket = document.createElement('div'); ticket.classList.add('ticket');
+    let ticketFrom = document.createElement('div'); ticketFrom.classList.add('ticket-from', 'ticket-div-left');
+    let ticketTo = document.createElement('div'); ticketTo.classList.add('ticket-to', 'ticket-div-right');
+
+
+    let timeContent;
+    timeContent = (new Date(data.fromDate)).toUTCString().split(' ');
+    let fromDate = `${timeContent[2]} ${timeContent[1]}`;
+    timeContent = (new Date(data.toDate)).toUTCString().split(' ');
+    let toDate = `${timeContent[2]} ${timeContent[1]}`;
+
     ticketFrom.appendChild(generateTicketText('departure', data.fromTime, fromDate, data.fromPlace));
     ticketTo.appendChild(generateTicketText('arrival', data.toTime, toDate, data.toPlace));
+    ticket.appendChild(ticketFrom);
+    ticket.appendChild(ticketTo);
+
+    return ticket;
   }
   catch(error) {
-    console.log('******************** Flight Ticket Error ******************** \n', error);
-    return ticket; //For Jest Test
+    console.log('******************** Create Flight Ticket Error ******************** \n', error);
   }
-
-  ticket.appendChild(ticketFrom);
-  ticket.appendChild(ticketTo);
-
-  return ticket;
 }
 
 function generateTicketText(toOrFrom, time, date, place) {

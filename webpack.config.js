@@ -11,7 +11,7 @@ console.log(`Webconfig is running in ${process.argv[process.argv.indexOf('--mode
 
 module.exports = {
   entry: {
-    main: path.resolve(__dirname, './src/client/js/app.js'),
+    main: path.resolve(__dirname, './src/client/index.js'),
   },
   output: {
     filename: '[name].bundle.js',
