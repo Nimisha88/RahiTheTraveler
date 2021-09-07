@@ -1,6 +1,6 @@
 # RahiTheTraveler
 
-A travel application that uses multiple types of data, from different APIs (data sources) namely, weather, location co-ordinates, destination images and Rest Countries
+A travel application that fetches multiple data from different APIs (data sources) namely, weather, location, destination image and destination's country information like it's capital, currency and language. It also helps user manage their packing list and tickets for their trip. As per project requirement, if the trip is within a week, current weather is displayed else next week's forecasted weather is displayed. Backdrop image assets are created to match the color theme of the application using [Canva](https://www.canva.com/).
 
 ## Application Preview for Saved Trips
 
@@ -87,6 +87,8 @@ The application is designed and developed by **Nimisha Viraj** as a part of [Uda
 
 * [Udacity](https://udacity.com) - Source of application requirements
 * [Canva](https://www.canva.com/) - Tool used to create app color themed Assets/Images
+* [FontAwesome](https://fontawesome.com/) - Source of Icons
+* [GoogleFonts](https://fonts.google.com/) - Source of fonts
 * [Geonames](http://www.geonames.org/) - Source of Locations' API Data
 * [Weatherbit](https://www.weatherbit.io/) - Source of Weather API Data
 * [Pixabay](https://pixabay.com/) - Source of Locations' Pictures API Data
