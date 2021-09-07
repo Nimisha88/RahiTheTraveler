@@ -85,13 +85,16 @@ The application is designed and developed by **Nimisha Viraj** as a part of [Uda
 ## Acknowledgements
 
 * [Udacity](https://udacity.com) - Source of application requirements
-* [Canva]()
-* []() - Source of API Data
+* [Canva](https://www.canva.com/) - Tool used to create app color themed Assets/Images
+* [Geonames](http://www.geonames.org/) - Source of Locations' API Data
+* [Weatherbit](https://www.weatherbit.io/) - Source of Weather API Data
+* [Pixabay](https://pixabay.com/) - Source of Locations' Pictures API Data
+* [RestCountries](https://restcountries.eu/) - Source of Countries Information API Data
 * [Stackoverflow](https://stackoverflow.com/) - Source of resolutions to coding errors and roadblocks
 
 
 ## Limitation and Scope
 
-* Service worker implementation impacts the overall speed of the Application
-* Fetching Api data is taking approx 12-15 secs to display result/error.
-* 
+* Service worker implementation impacts the overall speed of the Application. It is also seen crashing application due to their ongoing bug [1790](https://github.com/GoogleChrome/workbox/issues/1790)
+* Fetching Api data is taking approx 12-15 secs to display Result/Error.
+* Application can be expanded to provide more destination specific information like Point of Interests and offer more managing options like storing info of hotels or via trips.

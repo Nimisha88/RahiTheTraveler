@@ -37,17 +37,17 @@ AppAssetLoaders.loadAboutUsStaticAsset();
 // Register Service Worker
 // ----------------------------------------------------------------------------
 
-// if ('serviceWorker' in navigator) {
-//   window.addEventListener("load", () => {
-//     if (!navigator.serviceWorker.getRegistrations().length) {
-//       console.log('Registering Service Worker');
-//       navigator.serviceWorker.register('service-worker.js')
-//         .then(registration => {
-//           console.log('SW registered: ', registration);
-//         })
-//         .catch(registrationError => {
-//           console.log('SW registration failed: ', registrationError);
-//         });
-//     }
-//   });
-// }
+if ('serviceWorker' in navigator) {
+  window.addEventListener("load", () => {
+    if (!navigator.serviceWorker.getRegistrations().length) {
+      console.log('Registering Service Worker');
+      navigator.serviceWorker.register('service-worker.js')
+        .then(registration => {
+          console.log('SW registered: ', registration);
+        })
+        .catch(registrationError => {
+          console.log('SW registration failed: ', registrationError);
+        });
+    }
+  });
+}

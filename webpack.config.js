@@ -60,13 +60,13 @@ module.exports = {
       template: './src/client/views/index.html',
     }),
     new CleanWebpackPlugin(),
-    // new WorkboxPlugin.GenerateSW({
-    //   clientsClaim: true,
-    //   skipWaiting: true,
-    //   runtimeCaching: [{
-    //     urlPattern: /\/api\//,
-    //     handler: 'NetworkOnly',
-    //   },]
-    // }),
+    new WorkboxPlugin.GenerateSW({
+      clientsClaim: true,
+      skipWaiting: true,
+      runtimeCaching: [{
+        urlPattern: /\/api\//,
+        handler: 'NetworkOnly',
+      },]
+    }),
   ].concat(devMode ? [] : [new MiniCssExtractPlugin()]),
 };

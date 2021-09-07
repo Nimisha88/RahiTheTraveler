@@ -19,7 +19,7 @@
   .close-modal {
     position: absolute;
     top: 5.5%;
-    right: 9.5%;
+    right: 8%;
     padding: 0 0.5rem;
     background-color: $primary-color;
     border-radius: 50%;
@@ -134,10 +134,10 @@
   }
 
   .modal-data {
-    margin: 1rem;
+    margin: 0.5rem;
     display: grid;
-    grid-template-columns: 48% 48%;
-    grid-gap: 4%;
+    grid-template-columns: 49% 49%;
+    grid-gap: 2%;
     grid-template-rows: auto;
 
     h1, h2, h3, h4, h5, h6, p {
@@ -176,7 +176,7 @@
   // Weather Section Styling
 
   .modal-item.weather {
-    padding: 1rem;
+    padding: 0.5rem;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -252,7 +252,7 @@
 
   .modal-item.packing {
     position: relative;
-    padding: 1rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -450,7 +450,7 @@
 
   .modal-item.country-info {
     position: relative;
-    padding: 0.75rem;
+    padding: 0.5rem;
     display: flex;
     flex-direction: column;
     align-items: center;
