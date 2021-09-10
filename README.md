@@ -22,6 +22,7 @@ https://user-images.githubusercontent.com/29170466/132299435-5c4666d0-07d9-432d-
 ## Installation instructions
 
 * Install [NodeJS](https://nodejs.org/)
+* Install [Sass](https://sass-lang.com/) `npm install -g sass`
 * Download the application locally and do the following:
   * Obtain an APIKey at [Geonames]() by creating a free account.
   * Obtain an APIKey at [Weatherbit]() by creating a free account.
