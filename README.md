@@ -22,7 +22,16 @@ https://user-images.githubusercontent.com/29170466/132299435-5c4666d0-07d9-432d-
 ## Installation instructions
 
 * Install [NodeJS](https://nodejs.org/)
-* Download the application locally
+* Download the application locally and do the following:
+  * Obtain an APIKey at [Geonames]() by creating a free account.
+  * Obtain an APIKey at [Weatherbit]() by creating a free account.
+  * Obtain an APIKey at [Pixabay]() by creating a free account.
+  * In the main application folder, create `.env` file and add your APIKey like
+    ```
+    APIKeyWeatherbit=your-api-key-here
+    APIKeyGeonames=your-api-key-here
+    APIKeyPixabay=your-api-key-here
+    ```
 * On terminal, `cd` to the main application folder containing `package.json` and install dependencies by running `npm install`
 
 
