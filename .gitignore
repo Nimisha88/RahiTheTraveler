@@ -8,4 +8,7 @@ node_modules
 src/server/.env
 .env
 
+# Dist
+dist
+
 #The End

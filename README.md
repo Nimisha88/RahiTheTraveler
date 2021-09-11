@@ -2,6 +2,11 @@
 
 A travel application that fetches multiple data from different APIs (data sources) namely, weather, location, destination image and destination's country information like it's capital, currency and language. It also helps user manage their packing list and tickets for their trip. As per project requirement, if the trip is within a week, current weather is displayed else next week's forecasted weather is displayed. Backdrop image assets are created to match the color theme of the application using [Canva](https://www.canva.com/).
 
+## Application Link
+
+https://irahi.herokuapp.com/
+
+
 ## Application Preview for Saved Trips
 
 https://user-images.githubusercontent.com/29170466/132299435-5c4666d0-07d9-432d-af30-c1ee1656ffb9.mov
