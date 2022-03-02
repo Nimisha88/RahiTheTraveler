@@ -60,8 +60,8 @@ const PixabayAPI = {
 
 // JS Object with RestCountriesAPI base URL and other constants
 const RestCountriesAPI = {
-  baseURL: 'https://restcountries.eu',
-  countryCodeEP: '/rest/v2/alpha/'
+  baseURL: 'https://restcountries.com',
+  countryCodeEP: '/v2/alpha/'
 }
 
 // Data Object to store app specific GeonameAPI Data
